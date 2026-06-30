@@ -1,0 +1,3210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandra Kim</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Times New Roman', Times, serif;
+      background: #f5f6f8;
+      color: #111;
+    }
+
+
+    /* ── HERO ── */
+    .hero {
+      background: #fff;
+      padding: 80px 48px 72px;
+      border-bottom: 1px solid #e8eaed;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 5000px;
+      margin-bottom: 28px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    .btn-secondary {
+      background: #f0f2f5;
+      color: #111;
+      border: 1px solid #e0e2e6;
+    }
+
+    .btn-secondary:hover { background: #e4e6ea; }
+
+    
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+   
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .project-card {
+      background: #fff;
+      border: 1px solid #e8eaed;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .project-header {
+      padding: 28px 32px 20px;
+    }
+
+    .project-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: #f0f2f5;
+      border: 1px solid #e0e2e6;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #444;
+    }
+
+   
+    .project-files {
+      border-top: 1px solid #d3e5ff;
+    }
+
+    .file-tabs {
+      display: flex;
+      gap: 0;
+      background: #f7f8fa;
+      border-bottom: 1px solid #e8eaed;
+      overflow-x: auto;
+    }
+
+    .file-tab {
+      padding: 10px 18px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #777;
+      cursor: pointer;
+      border-right: 1px solid #e8eaed;
+      white-space: nowrap;
+      transition: background 0.12s, color 0.12s;
+      user-select: none;
+    }
+
+    .file-tab:hover { background: #eef0f3; color: #333; }
+    .file-tab.active { background: #fff; color: #111; font-weight: 600; }
+
+    .file-pane {
+      display: none;
+    }
+
+    .file-pane.active { display: block; }
+
+    pre {
+      background: #f7f8fa;
+      padding: 24px 32px;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #333;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    }
+
+    /* resume */
+    .resume-card {
+      background: #fff;
+      border: 1px solid #e8eaed;
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .resume-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .resume-info p {
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: #aaa;
+      border-top: 1px solid #e8eaed;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!--top part-->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>Alexandra Kim</h1>
+      <p>
+        Rising Junior at Rutgers University - New Brunswick | Pursuing a major in Data Science - Computer Science Track & a minor in Math | Expected graduation May 2028
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-secondary" href="https://github.com/alexkim1126" target="_blank">GitHub</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/alexandra-kim-321752286/">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- resume -->
+  <section id="resume">
+    <p class="section-title">Resume</p>
+
+    <div class="resume-card">
+      <div class="resume-info">
+        <h3>Alexandra Kim - Resume</h3>
+        <p>Data Science & Computer Science major, Math minor, expected graduation May 2028</p>
+      </div>
+      <a class="btn btn-primary" href="/Users/alexk/Downloads/Alexandra.Kim.pdf" target="_blank">Download PDF</a>
+    </div>
+  </section>
+
+
+  <!-- projects -->
+  <section id="projects">
+    <p class="section-title">Projects</p>
+    <div class="projects-grid">
+
+
+      <!-- project 1 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title"> Rutgers CS111 - Conditionals - Welcome </div>
+          <p class="project-desc">
+            Prompt: Write a program, Welcome.java, that prints out the message: Welcome to CS111.
+          </p>
+          <div class="tags">
+            <span class="tag">Java</span><span class="tag">Conditionals</span>
+          </div>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project1">
+            <div class="file-tab active" data-file="p1f1">Welcome.java</div>
+            </div>
+          <div class="file-pane active" id="p2f1"><pre>
+    public class Welcome {
+    public static void main(String[] args) {
+
+        System.out.println("Welcome to CS111.");
+        
+    }
+}
+</pre></div>
+        </div>
+      </div>
+
+
+
+      <!-- project 2 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Conditionals - Multiples</div>
+          <p class="project-desc">
+            Prompt: Write a program, Multiples.java, without using conditionals, that reads 2 whole numbers and displays TRUE if: the first number is 0 OR the second number is 0 OR the first number is a multiple of the second number OR displays FALSE otherwise.
+          </p>
+          <div class="tags">
+            <span class="tag">Java</span><span class="tag">Conditionals</span>
+          </div>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project2">
+            <div class="file-tab active" data-file="p2f1">Multiples.java</div>
+          </div>
+          <div class="file-pane active" id="p2f1"><pre>
+public class Multiples {
+    public static void main(String[] args) {
+      int var1 = Integer.parseInt(args[0]);
+      int var2 = Integer.parseInt(args[1]);
+
+      if ((var1 == 0) || (var2 == 0) || (var1 % var2 == 0)) {
+
+         System.out.println("true");
+      } else {
+         System.out.println("false");
+      }
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 2 -->
+
+
+      <!-- project 3 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Conditionals - Road Trip </div>
+          <p class="project-desc"> Prompt: Estimates the maximum driving range of a car based on fuel, fuel efficiency,
+ and several trip conditions (If isWeekend is true, the traffic slows down the trip, multiplying the current mpg by 0.70, If isRaining is true, the wet roads slow down the trip, multiplying the current mpg by 0.85, If hasMountainPass is true, multiply the current mpg by 0.90. The detour leads to less efficiency, If numPassengers ≥ 3, multiply the current mpg by 1.05 due to the ability to use HOV lanes, distance = gallons * mpg, where mpg has been updated according to the specifications above) </p>
+  <div class="tags">
+          <span class="tag">Java</span><span class="tag">Conditionals</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project3">
+            <div class="file-tab active" data-file="p3f1">RoadTrip.java</div>
+          </div>
+          <div class="file-pane active" id="p3f1"><pre>
+public class RoadTrip {
+
+    public static void main(String[] args) {
+        double gallons = Double.parseDouble(args[0]);
+        double mpg = Double.parseDouble(args[1]);
+        boolean isRaining = Boolean.parseBoolean(args[2]);
+        boolean hasMountainPass = Boolean.parseBoolean(args[3]);
+        int numPassengers = Integer.parseInt(args[4]);
+        boolean isWeekend = Boolean.parseBoolean(args[5]);
+
+        double currentmpg = mpg; 
+
+        if (isWeekend == true) {
+            currentmpg *= 0.70;
+        }
+        if (isRaining == true) {
+            currentmpg *= 0.85;
+        }
+        if (hasMountainPass == true) {
+            currentmpg *= 0.90;
+        }
+        if (numPassengers >= 3) {
+            currentmpg *= 1.05;
+        }
+    
+        double distance = gallons * currentmpg;
+        System.out.println("Expected range: " + distance + " miles");
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 3 -->
+
+
+      <!-- project 4-->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Conditionals & Loops - Buses</div>
+          <p class="project-desc">Prompt: Write a program Buses.java that takes a 4-digit integer as a command-line argument and displays ERROR, LX, or H depending on the sum of the four digits in the integer. The program displays ERROR if the input is negative and ends the program (does not ask for the input again). Note that LX bus digits are always even and H bus digits are always odd.
+
+</p>
+<div class="tags">
+          <span class="tag">Java</span><span class="tag">Conditionals</span><span class="tag">Loops</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project4">
+            <div class="file-tab active" data-file="p4f1">Buses.Java</div>
+          </div>
+          <div class="file-pane active" id="p4f1"><pre>
+public class Buses {
+    public static void main(String[] args) {
+ 
+            
+            int i = Integer.parseInt(args[0]);
+
+            if (i < 0) {
+                System.out.println("ERROR"); 
+            } 
+                int sum = 0;
+                int num = i;
+                for (int count = 0; count < 4; count ++) {
+                    sum += num % 10;
+                    num /= 10;
+                }
+                if (sum % 2 == 0) {
+                    System.out.println("LX");
+                } else {
+                    System.out.println("H");
+                }
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 4 -->
+
+      <!-- project 5 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Conditionals & Loops - Dog Walker</div>
+          <p class="project-desc">Prompt: Imagine that the city is a two-dimensional grid of points. At each step, the walker randomly moves 1 unit north (up), south (down), east (right), or west (left) with probability equal to 1/4 for each direction, independent of previous moves. You will use Math.random() to generate a random number between 0.0 (inclusive) and 1.0 (non-inclusive) to simulate the probability. Write a program DogWalker.java that takes an integer command-line argument n and simulates the motion of a walker randomly taking n steps and print the location at each step (including the starting point), treating the starting point as the origin (0, 0). Each step should be on its own line. Output formatting will be as follows: the coordinates of each step taken by the dog within a pair of parenthesis where the x and y coordinate are separated by a comma and NO SPACES (for example: (2,0)). Also, print the square of the final Euclidean distance from the origin as a double. The Euclidean distance lets you know how far from the starting point (home) your dog is after n steps. Output the words “Squared distance= ” followed by your distance. 
+
+</p>
+<div class="tags">
+          <span class="tag">Java</span><span class="tag">Conditionals</span><span class="tag">Loops</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project5">
+            <div class="file-tab active" data-file="p5f1">DogWalker.java</div>
+          </div>
+          <div class="file-pane active" id="p5f1"><pre>
+public class DogWalker {
+    public static void main(String[] args) {
+
+        int n = Integer.parseInt(args[0]);
+
+        int x = 0;
+        int y = 0;
+
+        System.out.println("(" + x + "," + y + ")");
+
+        for (int i = 0; i < n; i++) {
+            double distance = Math.random();
+            if (distance < 0.25) {
+                y++;
+            } else if (distance < 0.5) {
+                y--;
+            } else if (distance < 0.75) {
+                x++;
+            } else {
+                x--;
+            }
+            System.out.println("(" + x + "," + y + ")");
+        }
+
+        double squaredDistance = (x * x) + (y * y);
+        System.out.println("Squared distance = " + squaredDistance);
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 5 -->
+
+      <!-- project 6 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - 1D & 2D Arrays - Health Monitor</div>
+          <p class="project-desc">Prompt: Write a program, HealthMonitor.java, that takes the 7 double arguments and then 4 char arguments from the command line and then does calculations to determine the health level of that patient. Assume that 7 double inputs >= 0, the first char is either M or F (for Male or Female), the last three char inputs are specific values. To compute the total health score use: um of all (Points Calculation × Weight) products. To determine if the patient is healthy, average or unhealthy use these ranges: 
+Male:
+     • Healthy: >7.5
+     • Average: 6.5-7.5 (inclusive)
+     • Unhealthy: < 6.5
+
+Female:
+     • Healthy: > 7.0
+     • Average: 6.0-7.0 (inclusive)
+     • Unhealthy: < 6.0
+    </p>
+    <div class="tags">
+          <span class="tag">1D Arrays</span><span class="tag">2D Arrays</span><span class="tag">Java</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project6">
+            <div class="file-tab active" data-file="p6f1">HealthMonitor.java</div>
+          </div>
+          <div class="file-pane active" id="p6f1"><pre>
+public class HealthMonitor {
+    public static void main(String[] args) {
+        double age = Double.parseDouble(args[0]);
+        double sleepDuration = Double.parseDouble(args[1]);
+        double sleepQuality = Double.parseDouble(args[2]);
+        double activityLevel = Double.parseDouble(args[3]);
+        double stressLevel = Double.parseDouble(args[4]);
+        double heartRate = Double.parseDouble(args[5]);
+        double dailySteps = Double.parseDouble(args[6]);
+
+        char sex = args[7].charAt(0);
+        char bmi = args[8].charAt(0);
+        char bp = args[9].charAt(0);
+        char sleepDis = args[10].charAt(0);
+
+        double agePoints = (100 - age) / 10.0;
+        double sleepDurationPoints = (sleepDuration % 8.0);
+        double sleepQualityPoints = sleepQuality;
+        double activityLevelPoints = activityLevel / 10.0;
+        double stressLevelPoints = 10.0 - stressLevel;
+        double stepPoints = (dailySteps / 8000.0) * 10.0;
+
+        double heartRatePoints = 0.0;;
+        if (heartRate < 60) {
+            heartRatePoints = 7.0;
+        } else if (heartRate <= 100) {
+            heartRatePoints = 10.0;
+        } else {
+            heartRatePoints = 5.0;
+        }
+
+        double bmiPoints = 0.0; {
+            if (bmi == 'N') {
+                bmiPoints = 10.0;
+            } else if (bmi == 'O') {
+                bmiPoints = 7.0;
+            } else if (bmi == 'U') {
+                bmiPoints = 5.0;
+            } else if (bmi == 'B') {
+                bmiPoints = 3.0;
+            }
+        }
+
+        double bpPoints = 0.0; {
+            if (bp == 'N') {
+                bpPoints = 10.0;
+            } else if (bp == 'E') {
+                bpPoints = 7.0;
+            } else if (bp == 'O') {
+                bpPoints = 5.0;
+            } else if (bp == 'H') {
+                bpPoints = 3.0;
+            }
+        }
+
+        double sleepDisPoints = 0.0; {
+            if (sleepDis == 'N') {
+                sleepDisPoints = 10.0;
+            } else if (sleepDis == 'A') {
+                sleepDisPoints = 5.0;
+            } else if (sleepDis == 'I') {
+                sleepDisPoints = 3.0;
+            } 
+        }
+
+        double healthScore = 0.0;
+        healthScore += agePoints * 0.10;
+        healthScore += sleepDurationPoints * 0.10;
+        healthScore += sleepQualityPoints * 0.10;
+        healthScore += activityLevelPoints * 0.10;
+        healthScore += stressLevelPoints * 0.10;
+        healthScore += heartRatePoints * 0.10;
+        healthScore += stepPoints * 0.05;
+        healthScore += bmiPoints * 0.15;
+        healthScore += bpPoints * 0.10;
+        healthScore += sleepDisPoints * 0.10;
+
+        String health;
+        if (sex == 'M') {
+        if (healthScore > 7.5) {
+            health = "healthy";
+        } else if (healthScore >= 6.5) {
+            health = "average";
+        } else {
+            health = "unhealthy";
+        }
+    } else {
+        if (healthScore > 7.0) {
+            health = "healthy";
+        } else if (healthScore >= 6.0) {
+            health = "average";
+        } else {
+            health = "unhealthy";
+        }
+    }
+     System.out.println("Health score of: " + healthScore + " is " + health);
+
+    }
+ }
+
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 6 -->
+
+      <!--project 7 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - 1D & 2D Arrays - Egyptian Pyramid</div>
+          <p class="project-desc">Prompt: Code a program-taking in two tentative parameters from the terminal representing 1: the overall size of their figure and 2: the number of bricks provided-to build a pyramid. Create and use a 2D array to create the pyramid. Bricks, denoted by the symbol ‘X’ (capital X), should be placed beginning at the bottom left and continue until either we run out of bricks or the pyramid is complete. The surrounding area should be filled with the symbol ‘=’. Be sure to include a statement detailing the number of bricks remaining, in the format listed below. Keep in mind that the output should be PRINTED into the terminal.</p>
+          <div class="tags">
+          <span class="tag">1D Arrays</span><span class="tag">2D Arrays</span><span class="tag">Java</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project7">
+            <div class="file-tab active" data-file="p7f1">EgyptianPyramid.java</div>
+          </div>
+          <div class="file-pane active" id="p7f1"><pre>
+public class EgyptianPyramid {
+    public static void main(String[] args) {
+
+        int p = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+
+        char[][] pyramid = new char[p][p];
+
+        for (int i = 0; i < p; i++) {
+            for (int j = 0; j < p; j++) {
+                pyramid[i][j] = '=';
+            }
+        }
+
+        int remainingBricks = b;
+        boolean canBuild = true;
+
+        for (int r = p - 1; r >= 0 && canBuild; r--) {
+
+            int shouldHave = (p - 1) - r;
+
+            int ideal = p - 2 * shouldHave;
+
+            if (ideal < 1) {
+                canBuild = false;
+                continue;
+            }
+
+            int rowPlace = ideal; 
+            
+            if (remainingBricks < ideal) {
+                rowPlace = remainingBricks;
+                canBuild = false;
+            }
+
+            int startCol = (p - ideal) / 2;
+
+
+            for (int c = 0; c < rowPlace; c++) {
+                int col = startCol + c;
+                pyramid[r][col] = 'X';
+            }
+
+            remainingBricks = remainingBricks - rowPlace;
+
+            if (remainingBricks <=0) {
+                break;  
+            }
+            }
+            
+        for (int i = 0; i < p; i++) {
+            for (int j = 0; j < p; j++) {
+
+                System.out.print(pyramid[i][j]);
+            }
+
+            System.out.println();
+        }
+
+        System.out.println(remainingBricks + " Bricks Remaining");
+
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 7 -->
+
+      <!-- project 8 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Recursion - Recursive Ladder</div>
+          <p class="project-desc">Prompt: In Recursive Ladder, write a recursive function createLadder that receives one parameter, an integer n containing the number of levels. The method createLadder returns a string with n levels, following these rules: Odd levels are denoted by |=|\n (rails/step followed by the newline character \n), Even levels are denoted by | |\n (rails followed by the newline character \n. The rails are separated by ONE space in between),The topmost level (n = 1) is the end of the ladder and is denoted by |-|\n (rails with a single dash in between, followed by the newline character \n), and levels are built starting from the bottom and up to the top (assume n, the number of levels, is greater than or equal to 1). </p>
+          <div class="tags">
+          <span class="tag">Java</span><span class="tag">Recursion</span>
+        
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project8">
+            <div class="file-tab active" data-file="p8f1">Recursiveladder.java</div>
+          </div>
+          <div class="file-pane active" id="p8f1"><pre>
+public class Ladder {
+
+    public static String createLadder(int n) {
+        if (n == 1) {
+            return "|-|\n"; 
+        } else if (n % 2 == 0) {
+            return createLadder(n - 1) + "| |\n";
+        } else {
+            return createLadder(n - 1) + "|=|\n";
+        }
+    }
+    public static void main(String args[]) {
+        int n = Integer.parseInt(args[0]);
+        System.out.print(createLadder(n));
+    }
+}
+          </pre></div>
+        </div>
+      </div>
+      <!-- end project 8 -->
+
+      <!-- project 9 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Functions & Arrays - Fruit Costs</div>
+          <p class="project-desc">Prompt: The program will read in a list of fruits and their costs from a file, then find the two lowest cost fruits and print their names and costs along with the total cost.
+          <div class="tags">
+          <span class="tag">Java</span><span class="tag">Arrays</span><span class="tag">Functions</span>
+        
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project9">
+            <div class="file-tab active" data-file="p9f1">FruitCosts.java</div>
+            <div class="file-tab active" data-file="p9f2">fruitset1.txt</div>
+            <div class="file-tab active" data-file="p9f3">fruitset2.txt</div>
+          </div>
+          <div class="file-pane active" id="p9f1"><pre>
+public class FruitCosts {
+    public static void main(String[] args) {
+
+        // Do not remove this line, it opens the file for reading.
+        StdIn.setFile(args[0]);
+        int fruits = StdIn.readInt(); 
+
+        String[] fruitNames = new String[fruits];
+        double [] fruitCosts = new double[fruits];
+
+        for (int i = 0; i < fruits; i++) {
+            fruitNames[i] = StdIn.readString();
+            fruitCosts[i] = StdIn.readDouble();
+        }
+
+        double min1 = Double.MAX_VALUE;
+        double min2 = Double.MAX_VALUE;
+        int ind1 = -1;
+        int ind2 = -1;
+
+        for ( 
+            int i = 0; i < fruits; i++) {
+                if (fruitCosts[i] < min1) {
+                    min2 = min1;
+                    ind2 = ind1; 
+                    min1 = fruitCosts[i];
+                    ind1 = i;
+                } else if (fruitCosts[i] < min2) {
+                    min2 = fruitCosts[i];
+                    ind2 = i;
+                }
+            }
+            if (ind1 != -1 && ind2 != -1) {
+                System.out.println(fruitNames[ind1] + " " + fruitCosts[ind1]);
+                System.out.println(fruitNames[ind2] + " " + fruitCosts[ind2]);
+            
+                double total = fruitCosts[ind1] + fruitCosts[ind2];
+                System.out.println("Total " + total);
+            }
+
+           
+        }
+        
+}
+          </pre></div>
+<div class="file-pane" id="p9f2"><pre>
+2
+DKbanana 1.75
+Emberfruit 1.75
+          </pre></div>
+          <div class="file-pane" id="p9f3"><pre>
+7
+Raisin 0.20
+Apple 1.50
+Peach 2.89
+Banana 0.99
+Grapefruit 4.88
+GrannyApple 1.55
+Grape 0.75
+          </pre></div>
+    
+        </div>
+      </div>
+      <!-- end project 9 -->
+
+
+      <!-- peoject 10 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Rutgers CS111 - Running Time - RURacing</div>
+          <p class="project-desc">Prompt: Implement the logic for four distinct racing strategies, each corresponding to a common time complexity: O(N), O(N²), O(log N), and O(N log N). This program includes four racers: StarbucksTruck (O(N^2)), NLogNExpress (O(N Log N)), ScarletKnight (O(N)), and LogNExpress (O(Log N)).
+Calculate the appropriate distance to move for each action, which should be a power of 2 based on which action it is. 
+Make sure the racer doesn’t move beyond the track length by comparing the calculated distance with the remaining distance.
+Move the racer by the determined distance. (https://introcs.cs.rutgers.edu/a8-ruracing/)
+ </p>
+          <div class="tags">
+          <span class="tag">Java</span><span class="tag">Recursion</span>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project10">
+            <div class="file-tab active" data-file="p10f1">RURacing.java</div>
+            <div class="file-tab active" data-file="p10f2">Driver.java</div>
+            <div class="file-tab active" data-file="p10f3">Racer.java</div>
+            <div class="file-tab active" data-file="p10f4">RacerHistory.java</div>
+            <div class="file-tab active" data-file="p10f5">Track.java</div>
+            <div class="file-tab active" data-file="p10f6">track0.in</div>
+            <div class="file-tab active" data-file="p10f7">track1.in</div>
+          </div>
+          <div class="file-pane active" id="p10f1"><pre>
+/**
+ * RU Racing: The Algorithmic Grand Prix of Rutgers University
+ * =========================================================
+ * 
+ * In the bustling campus of Rutgers University, a legendary competition has
+ * emerged from the
+ * intersection of computer science and classic racing: The Algorithmic Grand
+ * Prix. This race
+ * showcases the practical application of algorithmic complexity through a
+ * thrilling competition
+ * that pushes the boundaries of teleportation technology.
+ * 
+ * THE LORE:
+ * ---------
+ * The Lore: ScarletTeleporter™ Technology
+ * 
+ * In 2062, Professors Sesh and Merkel both created a groundbreaking quantum
+ * teleportation device
+ * called the ScarletTeleporter. The purpose of the ScarletTeleporter is to move
+ * objects instantly across
+ * space using quantum entanglement. Many small scale simple tests have been
+ * conducted with the device,
+ * such as teleporting professor Sesh’s lunch across his lab. Until now, they
+ * wanted to use the ScarletTeleporter
+ * in a more practical way, Rutgers transportation. The ScarletTeleporter allows
+ * the students to travel around
+ * campus instantaneously.
+ * 
+ * There is a catch that comes with the device, it uses a large amount of
+ * energy.
+ * The amount of energy that the device uses depends on the efficiency of the
+ * algorithm.
+ * The better the algorithm, the less energy that is used. With this in mind,
+ * the department thought they
+ * could make a great educational opportunity and created the Algorithmic Grand
+ * Prix. The Algorithmic Grand Prix
+ * is a competition that helps students understand firsthand how algorithmic
+ * efficiency has real and physical
+ * consequences.
+ * 
+ * 
+ * The Racers:
+ * -----------
+ * 
+ * StarbucksTruck (ST): This racer represents an O(N²) time complexity. The truck
+ * takes N actions to charge but can only traverse one space at a time. This
+ * means that this racer is reliable, but inefficient for long distances.
+ * 
+ * NLogNExpress (NLOGN): This racer has an O(N log N) efficiency. The NLogNExpress
+ * uses a hybrid strategy. Before each teleport, it must spend N actions
+ * charging its quantum batteries (just like the slowest racers). However, once
+ * charged, it can leap a distance that doubles with every jump. For example,
+ * the first jump covers 1 space, second jump covers 2 spaces, third jump covers
+ * 4 spaces, and so on. This means each jump covers exponentially more ground,
+ * but each requires a full recharge. The racer starts off slow but ramps up in
+ * speed quickly.
+ * 
+ * ScarletKnight (SK): This racer demonstrates O(N) linear time complexity,
+ * steadily advancing one step at a time without needing to charge. While it is
+ * consistent, this approach lacks the advantage of longer jumps.
+ * 
+ * LogNExpress (LOGN): This racer demonstrates O(log N) logarithmic time complexity.
+ * It can double its teleportation distance with each jump without charging,
+ * allowing it to cover ground exponentially faster. For example, the first jump
+ * covers 1 space, the second jump covers 2 spaces, the third jump covers 4
+ * spaces, fourth jump covers 8 spaces, and so on.
+ * 
+ * THE RACE:
+ * ---------
+ * The race takes place on tracks that loop around Rutgers campuses. Each racer
+ * must complete
+ * exactly one lap, starting and finishing at the same point. Racers are ranked
+ * based on:
+ * 1. Fewest actions taken (fastest time)
+ * 2. In case of a tie, greatest distance traveled
+ * 
+ * Each racer employs a different strategy based on algorithmic complexity
+ * theories:
+ * - O(N) linear: Move forward consistently one step per action
+ * - O(N²) quadratic: Charge for N actions, then move one step
+ * - O(log N) logarithmic: Double teleportation distance with each move action
+ * - O(N log N): Charge for N actions, then double teleportation distance
+ * 
+ * Important rule: In each simulation step where a racer acts, it can perform
+ * only ONE action - either charge
+ * its battery OR teleport. This constraint creates the different time
+ * complexity behaviors.
+ * 
+ * Will the slow-and-steady ScarletKnight prevail? Or will the logarithmic
+ * efficiency of the
+ * LogNExpress zoom to victory? The outcome depends on the length of the track
+ * and the
+ * implementation of each racing strategy.
+ * 
+ * Students must implement these strategies to understand how algorithmic
+ * complexity affects
+ * real-world performance!
+ * 
+ * @author elianddb
+ */
+public class RURacing {
+    private ArrayList<Racer> racers;
+    private Track track;
+
+    /**
+     * Constructs a new race simulation with a specified track.
+     * This constructor initializes four racers, each employing a different
+     * algorithmic strategy:
+     * - ScarletKnight: O(N) linear time complexity
+     * - StarbucksTruck: O(N²) quadratic time complexity
+     * - LogNExpress: O(log N) logarithmic time complexity
+     * - NLogNExpress: O(N log N) time complexity
+     * 
+     * Note that racers with charging requirements (StarbucksTruck and NLogNExpress)
+     * are
+     * initialized with a charge actions count equal to the track length,
+     * representing the
+     * O(N)
+     * component of their time complexity.
+     * 
+     * @param track The track on which the race will be simulated
+     * @throws IllegalArgumentException if the track is null
+     */
+    public RURacing(Track track) {
+        if (track == null) {
+            throw new IllegalArgumentException("Track cannot be null.");
+        }
+
+        // Initialize each racer with the given track
+        this.track = track;
+        this.racers = new ArrayList<Racer>();
+        racers.add(new Racer("ScarletKnight", "SK", track, 0));
+        racers.add(new Racer("StarbucksTruck", "ST", track, track.getLength()));
+        racers.add(new Racer("LogNExpress", "LOGN", track, 0));
+        racers.add(new Racer("NLogNExpress", "NLOGN", track, track.getLength()));
+    }
+
+    // -----------------------------------------------------
+    // STUDENT METHODS - IMPLEMENT THESE METHODS
+    // -----------------------------------------------------
+
+    /**
+     * O(N²) Strategy - Quadratic time complexity implementation.
+     * 
+     * 
+     * 
+     * This strategy requires the racer to charge its battery for N actions between
+     * each teleportation.
+     * For a track of length N, the racer should:
+     * - Teleport 1 step immediately on its first action (since battery starts full)
+     * - Charge for N actions
+     * - Teleport 1 step (total actions for this step: N+1)
+     * - Charge for N more actions
+     * - Teleport 1 step (total actions for this step: N+1)
+     * ... and so on, resulting in O(N²) time complexity.
+     * 
+     * Note: Each time this racer acts, it can only perform ONE action - either
+     * charge or
+     * teleport.
+     * This racer must spend N actions charging before each teleport (after the
+     * first).
+     *
+     * @param racer The racer to which this strategy is applied
+     */
+    public static void applyStarbucksTruckAction(Racer racer) {
+        if (racer.getBattery() == racer.getChargeTime()) {
+            racer.useScarletTeleporterTM(1);
+        } else {
+            racer.chargeBattery();
+        }
+    }
+
+    /**
+     * O(N log N) Strategy - N * logarithmic time complexity implementation.
+     * 
+     * 
+     * 
+     * This strategy should combine charging time with exponentially increasing
+     * teleport distances:
+     * - Teleport 1 step immediately on its first action (since battery starts full)
+     * - Charge for N actions
+     * - Teleport 2 steps (total actions for this step: N+1)
+     * - Charge for N more actions
+     * - Teleport 4 steps (total actions for this step: N+1)
+     * ... and so on, doubling the distance each time a teleport occurs.
+     * 
+     * Note: Each time this racer acts, it can only perform ONE action - either
+     * charge or
+     * teleport.
+     * This racer must spend N actions charging before each teleport (after the
+     * first) with
+     * exponentially increasing distances.
+     * 
+     * @param racer The racer to which this strategy is applied
+     */
+    public static void applyNLogNExpressAction(Racer racer) {
+        if (racer.getBattery() < racer.getChargeTime()) {
+            racer.chargeBattery();
+        } else {
+            int currentDistance = racer.getDistance();
+            int jumpDistance;
+            
+            if (currentDistance == 0) {
+                jumpDistance = 1;
+            } else {
+                int lastK = (int) (Math.log(currentDistance) / Math.log(2));
+                jumpDistance = (int) Math.pow(2, lastK + 1);
+            }
+            int remainingDistance = racer.getTrack().getLength() - currentDistance;
+            int actualMove = Math.min(jumpDistance, remainingDistance);
+            racer.useScarletTeleporterTM(actualMove);
+        }
+    }
+
+    /**
+     * O(N) Strategy - Linear time complexity implementation.
+     * 
+     * 
+     * 
+     * This strategy should make the racer take exactly N teleportation actions to
+     * complete the track,
+     * with no charging time. The racer should move at a constant speed of 1 step
+     * per action,
+     * resulting in O(N) time complexity.
+     * 
+     * Note: Each time this racer acts, it can only perform ONE action - teleport.
+     * This racer doesn't need to charge, so it teleports every time it acts.
+     *
+     * @param racer The racer to which this strategy is applied
+     */
+    public static void applyScarletKnightAction(Racer racer) {
+        racer.useScarletTeleporterTM(1);
+    }
+
+    /**
+     * O(log N) Strategy - Logarithmic time complexity implementation.
+     * 
+     * 
+     * 
+     * This strategy should use exponentially increasing teleport distances to
+     * complete the track,
+     * with no charging time between teleports. The racer should move:
+     * - 1 step on action 1
+     * - 2 steps on action 2
+     * - 4 steps on action 3
+     * - 8 steps on action 4
+     * ... and so on, doubling the distance with each teleport action.
+     * 
+     * Note: Each time this racer acts, it can only perform ONE action - teleport.
+     * This racer doesn't need to charge, so it teleports every time it acts with
+     * exponentially increasing distances.
+     * 
+     * @param racer The racer to which this strategy is applied
+     */
+    public static void applyLogNExpressAction(Racer racer) {
+        int currentDistance = racer.getDistance();
+        int jumpDistance;
+
+        if (currentDistance == 0) {
+            jumpDistance = 1;
+        } else {
+            int lastK = (int) (Math.log(currentDistance) / Math.log(2));
+            jumpDistance = (int) Math.pow(2, lastK +1);
+        }
+
+        int remainingDistance = racer.getTrack().getLength() - currentDistance;
+        int actualMove = Math.min(jumpDistance, remainingDistance);
+
+        racer.useScarletTeleporterTM(actualMove);
+    }
+
+    /**
+     * Applies the appropriate action strategy for a racer based on their name.
+     * Made public so it can be called from the UI.
+     * 
+     * Each racer gets ONE action per simulation step - either charge their battery
+     * or
+     * teleport.
+     * This method selects and applies the correct strategy based on the racer type.
+     * 
+     * 
+     * 
+     * @param racer the racer to apply the action strategy to
+     */
+    public void applyActionStrategy(Racer racer) {
+        String name = racer.getName();
+
+        if (name.equals("ScarletKnight")) {
+            applyScarletKnightAction(racer);
+        } else if (name.equals("StarbucksTruck")) {
+            applyStarbucksTruckAction(racer);
+        } else if (name.equals("LogNExpress")) {
+            applyLogNExpressAction(racer);
+        } else if (name.equals("NLogNExpress")) {
+            applyNLogNExpressAction(racer);
+        }
+    }
+
+    /**
+     * Static method to rank a list of racers using Insertion Sort (stable).
+     * Racers are ranked first by who has traveled the FARTHEST distance,
+     * and if there's a tie, then by who has used the FEWEST actions.
+     * 
+     * 
+     * 
+     * @param racers List of racers to rank
+     * @return Ranked list of racers (highest distance first, then lowest action
+     *         count)
+     */
+    public static ArrayList<Racer> rankRacers(ArrayList<Racer> racers) {
+        for (int i = 1; i < racers.size(); i++) {
+            Racer current = racers.get(i);
+            int j = i - 1;
+
+            while (j >= 0) {
+                Racer other = racers.get(j);
+                boolean shouldSwap = false;
+
+                if (current.getDistance() > other.getDistance()) {
+                    shouldSwap = true;
+                } else if (current.getDistance() == other.getDistance()) {
+                    if (current.getActionsCount() < other.getActionsCount()) {
+                        shouldSwap = true;
+                    }
+                }
+                    if (shouldSwap) {
+                        racers.set(j + 1, other);
+                        j--;
+                    } else {
+                        break;
+                    }
+            }
+            racers.set(j + 1, current);
+        }
+
+        
+        return racers;
+    }
+
+    /**
+     * Simulates a race with a specified maximum number of simulation steps
+     * (cutoff).
+     * In each step, every racer that hasn't finished performs exactly ONE action
+     * based on their strategy
+     * (either charging or teleporting). The simulation stops when all racers finish
+     * or
+     * the cutoff number of steps is reached.
+     * 
+     * 
+     * 
+     * @param cutoff Maximum number of simulation steps before ending the simulation
+     * @return Ranked list of racers at the end of the simulation
+     */
+    public ArrayList<Racer> simulateRace(long cutoff) {
+        long currentActions = 0;
+        boolean allFinished = false;
+
+        while (currentActions < cutoff && !allFinished) {
+            allFinished = true;
+
+            for (Racer racer: racers) {
+                if (!racer.hasFinishedRace()) {
+                    applyActionStrategy(racer);
+                    allFinished = false;
+                }
+            }
+            currentActions++;
+        }
+        return rankRacers(racers);
+    }
+
+    // -----------------------------------------------------
+    // PRE-WRITTEN METHODS - DO NOT MODIFY
+    // -----------------------------------------------------
+
+    /**
+     * Ranks racers based on performance (fewest actions, then distance).
+     * 
+     * @return List of racers sorted by rank
+     */
+    public ArrayList<Racer> rankRacers() {
+        return rankRacers(new ArrayList<>(racers));
+    }
+
+    /**
+     * Simulates a race without a specified step limit.
+     * This method is a convenience wrapper for the full simulateRace method that
+     * uses
+     * the maximum possible number of steps as the cutoff.
+     */
+    public ArrayList<Racer> simulateRace() {
+        return simulateRace(Long.MAX_VALUE);
+    }
+
+    /**
+     * Retrieves the list of racers participating in the simulation.
+     * This includes all racers regardless of whether they have finished the race.
+     * 
+     * @return An unmodifiable list of all racers in the simulation
+     */
+    public ArrayList<Racer> getRacers() {
+        return racers;
+    }
+
+    /**
+     * Retrieves the track being used for this race simulation.
+     * 
+     * @return The track object on which the race is taking place
+     */
+    public Track getTrack() {
+        return track;
+    }
+
+    /**
+     * Retrieves the complete history of each racer's progress throughout the race.
+     * This method creates a list of RacerHistory objects, each containing snapshots
+     * of
+     * a racer's state after each action taken by that racer. This is primarily used
+     * for
+     * visualization
+     * and playback of the race history.
+     * 
+     * Note: A racer must have a history tracker set via setHistory() before the
+     * race
+     * for this method to return meaningful data.
+     * 
+     * @return A list of RacerHistory objects, one for each racer in the simulation
+     */
+    public ArrayList<RacerHistory> getRacersHistories() {
+        ArrayList<RacerHistory> histories = new ArrayList<>();
+        for (Racer racer : racers) {
+            histories.add(racer.getHistory());
+        }
+        return histories;
+    }
+}
+          </pre></div>
+
+    <div class="file-pane" id="p10f2"><pre>
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import javax.swing.event.ChangeListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.geom.Point2D;
+// Added imports for test harness
+import javax.swing.text.DefaultCaret;
+import java.util.function.Consumer;
+
+public class Driver {
+    // Constants
+    private static final String TRACK_DIRECTORY = System.getProperty("user.dir") + "/";
+    private static final int WINDOW_WIDTH = 800;
+    private static final int WINDOW_HEIGHT = 600;
+    private static final long SIMULATION_TIMEOUT_SECONDS = 5;
+    private static final int MAX_SLIDER_LABELS = 10;
+    private static final String[] TEST_OPTIONS = {
+            "1. applyScarletKnightAction (O(N))",
+            "2. applyStarbucksTruckAction (O(N^2))",
+            "3. applyLogNExpressAction (O(log N))",
+            "4. applyNLogNExpressAction (O(N log N))",
+            "5. applyActionStrategy (Dispatcher)",
+            "6. rankRacers (Static Sorting)"
+    };
+    private static final String[] RACER_TYPES_FOR_DISPATCHER = {
+            "ScarletKnight", "StarbucksTruck", "LogNExpress", "NLogNExpress"
+    };
+
+    // UI Components
+    private static JFrame frame;
+    private static JTabbedPane tabbedPane; // Added
+
+    // Simulation Tab Components
+    private static TrackPanel trackPanel;
+    private static JComboBox<String> simTrackSelector; // Renamed from trackSelector
+    private static JSlider historySlider;
+    private static JLabel actionLabel;
+    private static JPanel raceInfoPanel;
+    private static JButton startButton;
+    private static JButton resetButton;
+
+    // Test Harness Tab Components
+    private static JPanel testHarnessPanel;
+    private static JComboBox<String> testTrackSelector;
+    private static JComboBox<String> testMethodSelector;
+    private static JComboBox<String> testDispatcherRacerSelector; // For option 5
+    private static JSpinner testActionSpinner;
+    private static JButton runTestButton;
+    private static JTextArea testOutputArea;
+
+    // State
+    private static ChangeListener currentSliderListener = null;
+    private static List<RacerHistory> currentHistories = new ArrayList<>();
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Driver::createAndShowGUI);
+    }
+
+    private static void createAndShowGUI() {
+        frame = createMainFrame();
+        List<String> trackFiles = getTrackFiles(TRACK_DIRECTORY);
+
+        if (trackFiles.isEmpty()) {
+            showErrorDialog("No track files found in " + TRACK_DIRECTORY);
+            return;
+        }
+
+        // --- Create Simulation Tab Components ---
+        simTrackSelector = createTrackSelector(trackFiles); // Use simTrackSelector
+        Track initialTrack = new Track(TRACK_DIRECTORY + trackFiles.get(0));
+        trackPanel = createTrackPanel(initialTrack);
+        raceInfoPanel = createRaceInfoPanel();
+        historySlider = createHistorySlider();
+        actionLabel = createActionLabel();
+        startButton = createStartButton();
+        resetButton = createResetButton();
+        resetButton.setEnabled(false);
+
+        setupTrackSelectionListener(simTrackSelector); // Use simTrackSelector
+
+        JPanel topSimPanel = createTopPanel(simTrackSelector); // Use simTrackSelector
+        JPanel controlSimPanel = createControlPanel(startButton, resetButton, actionLabel, historySlider, raceInfoPanel);
+        JPanel simulationPanel = new JPanel(new BorderLayout()); // Container for sim tab
+        simulationPanel.add(trackPanel, BorderLayout.CENTER);
+        simulationPanel.add(topSimPanel, BorderLayout.NORTH);
+        simulationPanel.add(controlSimPanel, BorderLayout.SOUTH);
+
+        // --- Create Test Harness Tab Components ---
+        testHarnessPanel = createTestHarnessPanel(trackFiles);
+
+        // --- Create Tabbed Pane ---
+        tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Race Simulation", null, simulationPanel, "Visualize the full race simulation");
+        tabbedPane.addTab("Test Harness", null, testHarnessPanel, "Test individual strategies and methods");
+
+        frame.add(tabbedPane, BorderLayout.CENTER); // Add tabbed pane to frame
+
+        showFrame();
+    }
+
+    // --- GUI Creation Helpers ---
+
+    private static JFrame createMainFrame() {
+        JFrame mainFrame = new JFrame("RU Racing Track");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        return mainFrame;
+    }
+
+    private static JComboBox<String> createTrackSelector(List<String> trackFiles) {
+        return new JComboBox<>(trackFiles.toArray(new String[0]));
+    }
+
+    private static TrackPanel createTrackPanel(Track track) {
+        return new TrackPanel(track);
+    }
+
+    private static JPanel createRaceInfoPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        return panel;
+    }
+
+    private static JSlider createHistorySlider() {
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 0, 0);
+        slider.setEnabled(false);
+        slider.setPaintTicks(false);
+        slider.setPaintLabels(false);
+        return slider;
+    }
+
+    private static JLabel createActionLabel() {
+        return new JLabel("Action: 0");
+    }
+
+    private static JButton createStartButton() {
+        JButton button = new JButton("Start Simulation");
+        button.addActionListener(e -> handleStartSimulation());
+        return button;
+    }
+
+    private static JButton createResetButton() {
+        JButton button = new JButton("Reset Track");
+        button.addActionListener(e -> handleResetSimulation());
+        return button;
+    }
+
+    private static JPanel createTopPanel(JComboBox<String> selector) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("Select Track: "));
+        panel.add(selector);
+        return panel;
+    }
+
+    private static JPanel createControlPanel(JButton startBtn, JButton resetBtn, JLabel actionLbl, JSlider slider, JPanel infoPanel) {
+        JPanel controlPanel = new JPanel(new BorderLayout());
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.add(startBtn);
+        buttonPanel.add(resetBtn);
+        buttonPanel.add(actionLbl);
+
+        JPanel sliderPanel = new JPanel(new BorderLayout());
+        sliderPanel.add(slider, BorderLayout.CENTER);
+
+        JLabel sliderInstructions = new JLabel("Use arrow keys to navigate history");
+        sliderInstructions.setForeground(Color.DARK_GRAY);
+        sliderInstructions.setHorizontalAlignment(JLabel.CENTER);
+        sliderInstructions.setFont(new Font("SansSerif", Font.ITALIC, 11));
+        sliderPanel.add(sliderInstructions, BorderLayout.SOUTH);
+
+        controlPanel.add(buttonPanel, BorderLayout.NORTH);
+        controlPanel.add(sliderPanel, BorderLayout.CENTER);
+        controlPanel.add(infoPanel, BorderLayout.SOUTH);
+
+        return controlPanel;
+    }
+
+    private static void showFrame() {
+        frame.setLocationRelativeTo(null); // Center on screen
+        frame.setVisible(true);
+    }
+
+    /** Creates the panel for the Test Harness tab. */
+    private static JPanel createTestHarnessPanel(List<String> trackFiles) {
+        JPanel mainPanel = new JPanel(new BorderLayout(5, 5));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // --- Top Controls ---
+        JPanel topControls = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(2, 5, 2, 5);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // Track Selector
+        gbc.gridx = 0; gbc.gridy = 0;
+        topControls.add(new JLabel("Select Track:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 0; gbc.fill = GridBagConstraints.HORIZONTAL; gbc.weightx = 1.0;
+        testTrackSelector = createTrackSelector(trackFiles);
+        topControls.add(testTrackSelector, gbc);
+
+        // Method/Strategy Selector
+        gbc.gridx = 0; gbc.gridy = 1; gbc.fill = GridBagConstraints.NONE; gbc.weightx = 0.0;
+        topControls.add(new JLabel("Test Target:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 1; gbc.fill = GridBagConstraints.HORIZONTAL; gbc.weightx = 1.0;
+        testMethodSelector = new JComboBox<>(TEST_OPTIONS);
+        topControls.add(testMethodSelector, gbc);
+
+        // Dispatcher Racer Selector (initially hidden)
+        JLabel dispatcherLabel = new JLabel("Racer Type (for Dispatcher):");
+        gbc.gridx = 0; gbc.gridy = 2; gbc.fill = GridBagConstraints.NONE; gbc.weightx = 0.0;
+        topControls.add(dispatcherLabel, gbc);
+        gbc.gridx = 1; gbc.gridy = 2; gbc.fill = GridBagConstraints.HORIZONTAL; gbc.weightx = 1.0;
+        testDispatcherRacerSelector = new JComboBox<>(RACER_TYPES_FOR_DISPATCHER);
+        topControls.add(testDispatcherRacerSelector, gbc);
+        dispatcherLabel.setVisible(false); // Hide initially
+        testDispatcherRacerSelector.setVisible(false); // Hide initially
+
+        // Action Spinner
+        JLabel actionsLabel = new JLabel("Actions to Simulate:");
+        gbc.gridx = 0; gbc.gridy = 3; gbc.fill = GridBagConstraints.NONE; gbc.weightx = 0.0;
+        topControls.add(actionsLabel, gbc);
+        gbc.gridx = 1; gbc.gridy = 3; gbc.fill = GridBagConstraints.HORIZONTAL; gbc.weightx = 1.0;
+        testActionSpinner = new JSpinner(new SpinnerNumberModel(10, 0, 10000, 1)); // Default 10, min 0
+        topControls.add(testActionSpinner, gbc);
+
+        // Run Button
+        gbc.gridx = 1; gbc.gridy = 4; gbc.anchor = GridBagConstraints.EAST; gbc.fill = GridBagConstraints.NONE; gbc.weightx = 0.0;
+        runTestButton = new JButton("Run Test");
+        topControls.add(runTestButton, gbc);
+
+        // Add listener to show/hide dispatcher selector and action spinner
+        testMethodSelector.addActionListener(e -> {
+            int selectedIndex = testMethodSelector.getSelectedIndex();
+            boolean showDispatcher = selectedIndex == 4; // Index for "applyActionStrategy"
+            boolean showActions = selectedIndex != 5; // Hide for "rankRacers"
+            dispatcherLabel.setVisible(showDispatcher);
+            testDispatcherRacerSelector.setVisible(showDispatcher);
+            actionsLabel.setVisible(showActions);
+            testActionSpinner.setVisible(showActions);
+        });
+        // Trigger listener initially
+        testMethodSelector.setSelectedIndex(0);
+        testMethodSelector.getActionListeners()[0].actionPerformed(null);
+
+        // --- Output Area ---
+        testOutputArea = new JTextArea(15, 60);
+        testOutputArea.setEditable(false);
+        testOutputArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        // Make scroll pane auto-scroll to bottom
+        DefaultCaret caret = (DefaultCaret) testOutputArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        JScrollPane scrollPane = new JScrollPane(testOutputArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // --- Add components to main panel ---
+        mainPanel.add(topControls, BorderLayout.NORTH);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // --- Add Action Listener for Run Button ---
+        runTestButton.addActionListener(e -> handleRunTest());
+
+        return mainPanel;
+    }
+
+    // --- Event Listener Setup ---
+
+    private static void setupTrackSelectionListener(JComboBox<String> selector) { // Parameterized selector
+        selector.addActionListener(e -> {
+            // Only reset simulation tab if the event came from simTrackSelector
+            if (e.getSource() == simTrackSelector) {
+                String selectedTrackFile = (String) simTrackSelector.getSelectedItem();
+                if (selectedTrackFile != null) {
+                    Track newTrack = new Track(TRACK_DIRECTORY + selectedTrackFile);
+                    resetUIState(newTrack); // Resets only the simulation tab UI
+                }
+            }
+            // No action needed here if the event came from testTrackSelector
+        });
+    }
+
+    private static void setupHistorySliderListener() {
+        // Remove any existing listener
+        if (currentSliderListener != null) {
+            historySlider.removeChangeListener(currentSliderListener);
+        }
+
+        // Add new listener
+        currentSliderListener = ce -> {
+            int historyStep = historySlider.getValue();
+            updateRaceDisplay(historyStep);
+            actionLabel.setText("Action: " + historyStep);
+        };
+        historySlider.addChangeListener(currentSliderListener);
+
+        SwingUtilities.invokeLater(() -> historySlider.requestFocusInWindow());
+    }
+
+    // --- Simulation Logic ---
+
+    private static void handleStartSimulation() {
+        RURacing simulation = trackPanel.getSimulation();
+        setupHistoryTracking(simulation);
+
+        // Disable start button and enable reset button during/after simulation
+        startButton.setEnabled(false);
+        resetButton.setEnabled(true);
+
+        try {
+            runSimulationWithTimeout(simulation);
+            currentHistories = simulation.getRacersHistories(); // Store histories
+            updateSliderAfterSimulation(currentHistories);
+            updateRaceDisplay(0); // Display initial state
+            setupHistorySliderListener();
+        } catch (Throwable ex) {
+            handleSimulationError(ex);
+        }
+    }
+
+    private static void handleResetSimulation() {
+        // Reset the current track *for the simulation tab*
+        String selectedTrackFile = (String) simTrackSelector.getSelectedItem(); // Use sim selector
+        if (selectedTrackFile != null) {
+            Track newTrack = new Track(TRACK_DIRECTORY + selectedTrackFile);
+            resetUIState(newTrack); // Resets only the simulation tab UI
+        }
+    }
+
+    private static void setupHistoryTracking(RURacing simulation) {
+        for (Racer racer : simulation.getRacers()) {
+            RacerHistory history = new RacerHistory();
+            racer.setHistory(history);
+            history.onRacerUpdate(racer); // Record initial state
+        }
+    }
+
+    private static void runSimulationWithTimeout(RURacing simulation) throws Throwable {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<List<Racer>> future = executor.submit(() -> {
+            // Ensure the correct track file path is used
+            return simulation.simulateRace();
+        });
+
+        try {
+            future.get(SIMULATION_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+        } catch (TimeoutException timeoutEx) {
+            future.cancel(true); // Attempt to interrupt the task
+            throw new RuntimeException("Simulation timed out after " + SIMULATION_TIMEOUT_SECONDS
+                    + " seconds. Possible infinite loop detected.");
+        } catch (ExecutionException execEx) {
+            throw execEx.getCause(); // Unwrap and rethrow the original exception
+        } catch (InterruptedException interEx) {
+            Thread.currentThread().interrupt(); // Restore interrupt status
+            throw new RuntimeException("Simulation was interrupted.", interEx);
+        } finally {
+            executor.shutdownNow(); // Ensure the executor is shut down
+        }
+    }
+
+    private static void updateSliderAfterSimulation(List<RacerHistory> histories) {
+        int maxHistorySteps = 0;
+        for (RacerHistory history : histories) {
+            maxHistorySteps = Math.max(maxHistorySteps, history.size() - 1);
+        }
+
+        boolean enabled = maxHistorySteps > 0;
+
+        // Disable label painting first to avoid issues during range changes
+        historySlider.setPaintLabels(false);
+
+        // Set range properties
+        historySlider.setMinimum(0);
+        historySlider.setMaximum(maxHistorySteps);
+        historySlider.setValue(0);
+
+        // Set other slider properties
+        historySlider.setEnabled(enabled);
+        historySlider.setPaintTicks(enabled);
+
+        // Now it's safe to clear the label table
+        historySlider.setLabelTable(null);
+
+        if (enabled) {
+            int majorTickSpacing = Math.max(1, maxHistorySteps / MAX_SLIDER_LABELS);
+            historySlider.setMajorTickSpacing(majorTickSpacing);
+
+            Hashtable<Integer, JLabel> labelTable = createSliderLabels(maxHistorySteps, majorTickSpacing);
+            if (!labelTable.isEmpty()) {
+                historySlider.setLabelTable(labelTable);
+                historySlider.setPaintLabels(true);
+            }
+        }
+
+        actionLabel.setText("Action: 0");
+    }
+
+    private static Hashtable<Integer, JLabel> createSliderLabels(int maxSteps, int spacing) {
+        Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
+        for (int i = 0; i <= maxSteps; i += spacing) {
+            labelTable.put(i, new JLabel(String.valueOf(i)));
+        }
+        // Ensure the last tick is labeled if not already covered
+        if (maxSteps % spacing != 0 && maxSteps > 0) {
+            labelTable.put(maxSteps, new JLabel(String.valueOf(maxSteps)));
+        }
+        return labelTable;
+    }
+
+    // --- Test Harness Logic ---
+
+    private static void handleRunTest() {
+        testOutputArea.setText(""); // Clear previous output
+        runTestButton.setEnabled(false); // Disable button during test
+
+        // Get selections
+        String selectedTrackFile = (String) testTrackSelector.getSelectedItem();
+        int selectedMethodIndex = testMethodSelector.getSelectedIndex();
+        int actionsToSimulate = (Integer) testActionSpinner.getValue();
+        String selectedDispatcherRacer = (String) testDispatcherRacerSelector.getSelectedItem();
+
+        if (selectedTrackFile == null) {
+            appendToTestOutput("Error: No track file selected.");
+            runTestButton.setEnabled(true);
+            return;
+        }
+
+        // Load track in a background thread to avoid freezing GUI
+        SwingWorker<Track, Void> trackLoader = new SwingWorker<>() {
+            @Override
+            protected Track doInBackground() throws Exception {
+                appendToTestOutput("Loading track: " + selectedTrackFile + "...");
+                return new Track(TRACK_DIRECTORY + selectedTrackFile);
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    Track track = get();
+                    appendToTestOutput("Track loaded successfully (Length: " + track.getLength() + ").\n");
+                    // Proceed with the test in another worker thread
+                    runSelectedTest(track, selectedMethodIndex, actionsToSimulate, selectedDispatcherRacer);
+                } catch (Exception ex) {
+                    appendToTestOutput("Error loading track: " + ex.getMessage());
+                    ex.printStackTrace(); // Log details
+                    runTestButton.setEnabled(true); // Re-enable button on error
+                }
+            }
+        };
+        trackLoader.execute();
+    }
+
+    private static void runSelectedTest(Track track, int methodIndex, int actions, String dispatcherRacer) {
+        // Run the actual test logic in a background thread
+        SwingWorker<Void, String> testWorker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    switch (methodIndex) {
+                        case 0: // applyScarletKnightAction
+                        case 1: // applyStarbucksTruckAction
+                        case 2: // applyLogNExpressAction
+                        case 3: // applyNLogNExpressAction
+                            testIndividualStrategyGUI(track, methodIndex + 1, actions); // Pass 1-based index
+                            break;
+                        case 4: // applyActionStrategy (Dispatcher)
+                            testApplyActionStrategyGUI(track, dispatcherRacer, actions);
+                            break;
+                        case 5: // rankRacers
+                            testRankRacersGUI(track);
+                            break;
+                        default:
+                            publish("Error: Invalid test selection.");
+                    }
+                } catch (Exception e) {
+                    publish("\n--- ERROR DURING TEST ---");
+                    publish("Error: " + e.getMessage());
+                    // Publish stack trace elements for debugging
+                    for (StackTraceElement ste : e.getStackTrace()) {
+                        publish("  at " + ste.toString());
+                    }
+                    e.printStackTrace(); // Also print to console
+                }
+                return null;
+            }
+
+            @Override
+            protected void process(List<String> chunks) {
+                // Update GUI with output published from doInBackground
+                for (String line : chunks) {
+                    appendToTestOutput(line);
+                }
+            }
+
+            @Override
+            protected void done() {
+                // Re-enable button when test is finished or errored
+                appendToTestOutput("\n--- Test Complete ---");
+                runTestButton.setEnabled(true);
+            }
+        };
+        testWorker.execute();
+    }
+
+    // --- Test Harness Helper Methods (Adapted from RURacing) ---
+
+    /** Appends text to the test output area safely from any thread. */
+    private static void appendToTestOutput(String text) {
+        SwingUtilities.invokeLater(() -> {
+            testOutputArea.append(text + "\n");
+        });
+    }
+
+    /** Tests one of the individual static strategy action methods via GUI. */
+    private static void testIndividualStrategyGUI(Track track, int strategyChoice, int actionsToSimulate) {
+        Racer racer = null;
+        Consumer<Racer> strategyAction = null;
+        String strategyName = "";
+
+        switch (strategyChoice) {
+            case 1:
+                racer = new Racer("ScarletKnight", "⚔", track, 0);
+                strategyAction = RURacing::applyScarletKnightAction;
+                strategyName = "applyScarletKnightAction";
+                break;
+            case 2:
+                racer = new Racer("StarbucksTruck", "🚚", track, track.getLength());
+                strategyAction = RURacing::applyStarbucksTruckAction;
+                strategyName = "applyStarbucksTruckAction";
+                break;
+            case 3:
+                racer = new Racer("LogNExpress", "🚎", track, 0);
+                strategyAction = RURacing::applyLogNExpressAction;
+                strategyName = "applyLogNExpressAction";
+                break;
+            case 4:
+                racer = new Racer("NLogNExpress", "🚌", track, track.getLength());
+                strategyAction = RURacing::applyNLogNExpressAction;
+                strategyName = "applyNLogNExpressAction";
+                break;
+            default:
+                appendToTestOutput("Internal error: Invalid strategy choice passed to testIndividualStrategyGUI.");
+                return;
+        }
+        appendToTestOutput("Testing strategy: " + racer.getName() + " (using static " + strategyName + ")");
+        simulateAndPrintGUI(racer, strategyAction, actionsToSimulate, track.getLength());
+    }
+
+    /** Tests the non-static applyActionStrategy method via GUI. */
+    private static void testApplyActionStrategyGUI(Track track, String racerName, int actionsToSimulate) {
+        Racer racer = null;
+        switch (racerName) {
+            case "ScarletKnight": racer = new Racer("ScarletKnight", "⚔", track, 0); break;
+            case "StarbucksTruck": racer = new Racer("StarbucksTruck", "🚚", track, track.getLength()); break;
+            case "LogNExpress": racer = new Racer("LogNExpress", "🚎", track, 0); break;
+            case "NLogNExpress": racer = new Racer("NLogNExpress", "🚌", track, track.getLength()); break;
+            default:
+                appendToTestOutput("Error: Invalid racer type selected for dispatcher test.");
+                return;
+        }
+
+        appendToTestOutput("Testing applyActionStrategy with: " + racer.getName());
+
+        RURacing simulationInstance = new RURacing(track); // Need instance
+        Consumer<Racer> strategyAction = r -> simulationInstance.applyActionStrategy(r); // Lambda calls instance method
+
+        simulateAndPrintGUI(racer, strategyAction, actionsToSimulate, track.getLength());
+    }
+
+    /** Helper method to run simulation loop and print results to GUI. */
+    private static void simulateAndPrintGUI(Racer racer, Consumer<Racer> actionToApply, int actionsToSimulate, int trackLength) {
+        appendToTestOutput("\n--- Simulating " + actionsToSimulate + " actions ---");
+        appendToTestOutput(String.format("Initial State: Pos=%s, Dist=%d/%d, Bat=%d/%d, Actions=%d",
+                racer.getPosition(), racer.getDistance(), trackLength,
+                racer.getBattery(), racer.getChargeTime(), racer.getActionsCount()));
+
+        for (int i = 0; i < actionsToSimulate; i++) {
+            if (racer.hasFinishedRace()) {
+                appendToTestOutput("Racer finished the race early!");
+                break;
+            }
+            try {
+                actionToApply.accept(racer); // Apply the chosen action method
+
+                appendToTestOutput(String.format("After Action %d: Pos=%s, Dist=%d/%d, Bat=%d/%d, Actions=%d, Finished=%b",
+                        racer.getActionsCount(), // Use actual action count from racer
+                        racer.getPosition(),
+                        racer.getDistance(), trackLength,
+                        racer.getBattery(), racer.getChargeTime(),
+                        racer.getActionsCount(),
+                        racer.hasFinishedRace()));
+
+            } catch (Exception e) {
+                appendToTestOutput(String.format("!!! Error during action %d: %s", racer.getActionsCount() + 1, e.getMessage()));
+                // Log stack trace for debugging
+                for (StackTraceElement ste : e.getStackTrace()) {
+                    appendToTestOutput("  at " + ste.toString());
+                }
+                e.printStackTrace(); // Also print to console
+                break; // Stop simulation on error
+            }
+        }
+    }
+
+    /** Tests the static rankRacers method via GUI. */
+    private static void testRankRacersGUI(Track track) { // Use the passed-in track
+        appendToTestOutput("\n--- Testing rankRacers ---");
+
+        // Create a list of racers with different states for testing ranking
+        List<Racer> testRacers = new ArrayList<>();
+
+        // Use the provided track
+        Racer racerA = new Racer("RacerA", "A", track, 0); // Less actions, less dist
+        Racer racerB = new Racer("RacerB", "B", track, 0); // More actions, more dist
+        Racer racerC = new Racer("RacerC", "C", track, 0); // Less actions, more dist (Winner)
+        Racer racerD = new Racer("RacerD", "D", track, 0); // More actions, less dist
+
+        // Simulate actions to achieve desired state (adjust multipliers as needed)
+        int baseActions = track.getLength() / 5; // ~20% of track length
+        // Ensure baseActions is at least 1 to avoid issues on very short tracks
+        baseActions = Math.max(1, baseActions);
+
+        for (int i = 0; i < baseActions; i++) racerA.useScarletTeleporterTM(1); // Dist=base, Actions=base
+        for (int i = 0; i < baseActions * 2; i++) racerB.useScarletTeleporterTM(1); // Dist=base*2, Actions=base*2
+        for (int i = 0; i < baseActions; i++) racerC.useScarletTeleporterTM(2); // Dist=base*2, Actions=base
+        for (int i = 0; i < baseActions * 2; i++) racerD.useScarletTeleporterTM(0); // Dist=0, Actions=base*2 (Charge example)
+
+        testRacers.add(racerA);
+        testRacers.add(racerB);
+        testRacers.add(racerC);
+        testRacers.add(racerD);
+
+        appendToTestOutput("Initial (Unranked) Racers:");
+        for (Racer r : testRacers) {
+            appendToTestOutput(String.format("  - %s: Actions=%d, Distance=%d", r.getName(), r.getActionsCount(), r.getDistance()));
+        }
+
+        // Call the method to be tested
+        List<Racer> rankedRacers = RURacing.rankRacers(new ArrayList<>(testRacers)); // Use static method, pass a copy
+
+        appendToTestOutput("\nRanked Racers (Highest Distance First, then Lowest Actions):");
+        int rank = 1;
+        for (Racer r : rankedRacers) {
+            appendToTestOutput(String.format("  %d. %s: Actions=%d, Distance=%d", rank++, r.getName(), r.getActionsCount(), r.getDistance()));
+        }
+    }
+
+    // --- UI Update Logic ---
+
+    private static void resetUIState(Track newTrack) {
+        // --- Reset Simulation Tab ---
+        trackPanel.setTrack(newTrack);
+        RURacing newSimulation = new RURacing(newTrack);
+        trackPanel.setSimulation(newSimulation);
+        trackPanel.setRacers(new ArrayList<>()); // Clear racers display
+        currentHistories.clear(); // Clear stored histories
+        trackPanel.resetView(); // Reset zoom and pan
+
+        startButton.setEnabled(true);
+        resetButton.setEnabled(false);
+
+        if (currentSliderListener != null) {
+            historySlider.removeChangeListener(currentSliderListener);
+            currentSliderListener = null;
+        }
+
+        historySlider.setModel(new DefaultBoundedRangeModel(0, 0, 0, 0));
+        historySlider.setPaintTicks(false);
+        historySlider.setPaintLabels(false);
+        historySlider.setEnabled(false);
+        historySlider.setLabelTable(null);
+
+        actionLabel.setText("Action: 0");
+
+        raceInfoPanel.removeAll();
+        raceInfoPanel.revalidate();
+        raceInfoPanel.repaint();
+
+        trackPanel.repaint();
+
+        // --- Reset Test Harness Tab (Optional - maybe just clear output?) ---
+        // testOutputArea.setText(""); // Optionally clear test output on sim reset
+    }
+
+    private static void updateRaceDisplay(int historyStep) {
+        if (currentHistories.isEmpty()) {
+            return; // Nothing to display
+        }
+
+        // Get racers at the specified history step from stored histories
+        List<Racer> racersAtStep = getRacersAtAction(currentHistories, historyStep);
+        List<Racer> previousRacers = (historyStep > 0) ? getRacersAtAction(currentHistories, historyStep - 1) : new ArrayList<>();
+
+        // Detect turn effects (teleportations and charging)
+        List<TurnEffect> turnEffects = detectTurnEffects(racersAtStep, previousRacers);
+
+        // Update track panel
+        trackPanel.setRacers(racersAtStep);
+        trackPanel.setTurnEffects(turnEffects); // Use the new method
+        trackPanel.startAnimation(); // This will trigger repaint
+
+        // Update info panel
+        updateInfoPanel(racersAtStep);
+    }
+
+    private static List<Racer> getRacersAtAction(List<RacerHistory> histories, int actionIndex) {
+        List<Racer> racersAtAction = new ArrayList<>();
+        for (RacerHistory history : histories) {
+            int historyIndex = Math.min(actionIndex, history.size() - 1);
+            if (historyIndex >= 0) {
+                racersAtAction.add(history.getActionSnapshot(historyIndex));
+            }
+        }
+        return racersAtAction;
+    }
+
+    private static List<TurnEffect> detectTurnEffects(List<Racer> currentRacers, List<Racer> previousRacers) {
+        List<TurnEffect> effects = new ArrayList<>();
+        Map<String, Racer> previousRacerMap = new HashMap<>();
+        Map<String, Point> previousScreenPositions = trackPanel.getRacerScreenPositions(); // Get previous screen positions
+
+        // Build map of previous racers
+        for (Racer racer : previousRacers) {
+            previousRacerMap.put(racer.getName(), racer);
+        }
+
+        // Compare current racers with previous state
+        for (Racer currentRacer : currentRacers) {
+            Racer previousRacer = previousRacerMap.get(currentRacer.getName());
+            Point previousScreenPos = previousScreenPositions.get(currentRacer.getName());
+
+            if (previousRacer != null) {
+                // Check for teleportation (position change)
+                if (!previousRacer.getPosition().equals(currentRacer.getPosition())) {
+                    effects.add(new TeleportEffect(
+                            currentRacer.getName(),
+                            previousRacer.getPosition(),
+                            currentRacer.getPosition(),
+                            previousScreenPos // Pass the precise previous screen position
+                    ));
+                }
+                // Check for charging (position same, battery increased)
+                else if (currentRacer.getBattery() > previousRacer.getBattery()) {
+                    effects.add(new ChargeEffect(
+                            currentRacer.getName(),
+                            currentRacer.getPosition() // Position where charging occurred
+                    ));
+                }
+            }
+        }
+        return effects;
+    }
+
+    private static void updateInfoPanel(List<Racer> racersAtTurn) {
+        raceInfoPanel.removeAll();
+
+        List<Racer> rankedRacers = RURacing.rankRacers(new ArrayList<>(racersAtTurn));
+        Map<String, Integer> racerRanks = new HashMap<>();
+        for (int i = 0; i < rankedRacers.size(); i++) {
+            racerRanks.put(rankedRacers.get(i).getName(), i + 1);
+        }
+
+        JLabel rankingTitle = new JLabel("Current Rankings:");
+        rankingTitle.setFont(new Font("SansSerif", Font.BOLD, 12));
+        raceInfoPanel.add(rankingTitle);
+
+        for (Racer racer : rankedRacers) {
+            int rank = racerRanks.get(racer.getName());
+            String status = racer.hasFinishedRace() ? " [FINISHED]" : "";
+            JLabel racerInfo = new JLabel(
+                    String.format("#%d - %s (%s)%s: Pos (%d,%d), Dist: %d/%d, Bat: %d/%d, Actions: %d",
+                            rank,
+                            racer.getName(), racer.getSymbol(), status,
+                            racer.getPosition().x, racer.getPosition().y,
+                            racer.getDistance(), racer.getTrack().getLength(),
+                            racer.getBattery(), racer.getChargeTime(),
+                            racer.getActionsCount()));
+
+            // Set color based on rank
+            racerInfo.setForeground(getRankColor(rank));
+            raceInfoPanel.add(racerInfo);
+        }
+
+        raceInfoPanel.revalidate();
+        raceInfoPanel.repaint();
+    }
+
+    private static Color getRankColor(int rank) {
+        switch (rank) {
+            case 1: return new Color(218, 165, 32); // Gold
+            case 2: return new Color(112, 128, 144); // Silver (SlateGray)
+            case 3: return new Color(176, 141, 87); // Bronze
+            default: return Color.BLACK;
+        }
+    }
+
+    // --- Utility and Error Handling ---
+
+    private static List<String> getTrackFiles(String directoryPath) {
+        List<String> trackFiles = new ArrayList<>();
+        File directory = new File(directoryPath);
+        if (directory.exists() && directory.isDirectory()) {
+            File[] files = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(".in"));
+            if (files != null) {
+                for (File file : files) {
+                    trackFiles.add(file.getName());
+                }
+                // Sort files alphabetically for consistent order
+                trackFiles.sort(String.CASE_INSENSITIVE_ORDER);
+            }
+        }
+        return trackFiles;
+    }
+
+    private static void handleSimulationError(Throwable ex) {
+        String errorMessage = ex.getMessage() != null ? ex.getMessage() : "An unknown error occurred.";
+        String errorSource = "an error in your implementation";
+        String specificMethod = "";
+
+        if (errorMessage.contains("infinite loop")) {
+            errorSource = "a possible infinite loop";
+        } else if (ex instanceof Exception) {
+            StackTraceElement[] stackTrace = ex.getStackTrace();
+            for (StackTraceElement element : stackTrace) {
+                String methodName = element.getMethodName();
+                // Try to identify a strategy method
+                if (methodName.contains("apply") && methodName.contains("Turn")) {
+                    specificMethod = " in the " + methodName + " method";
+                    break;
+                }
+            }
+            if (!specificMethod.isEmpty()) {
+                errorSource = "an error" + specificMethod;
+            }
+        }
+
+        String fullMessage = String.format(
+                "An error occurred during simulation:\n%s\n\nThe simulation failed due to %s.\nCheck your implementation.",
+                errorMessage, errorSource);
+
+        showErrorDialog(fullMessage);
+        ex.printStackTrace(); // Log full trace for debugging
+    }
+
+    private static void showErrorDialog(String message) {
+        JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    // ========================================================================
+    // Inner Class: TrackPanel - For visualizing the track
+    // ========================================================================
+    static class TrackPanel extends JPanel {
+        // Constants
+        private static final int DEFAULT_CELL_SIZE = 30;
+        private static final int LEFT_PADDING = 200;
+        private static final int TOP_PADDING = 50;
+        private static final int RIGHT_PADDING = 50;
+        private static final int BOTTOM_PADDING = 50;
+        private static final int ANIMATION_FRAMES = 20; // Total frames for teleport
+        private static final int PATH_FRAMES = 5; // Frames to show just the path
+        private static final int ANIMATION_DELAY_MS = 50; // Milliseconds per frame
+        private static final double MIN_ZOOM = 0.2;
+        private static final double MAX_ZOOM = 8.0;
+        private static final double ZOOM_SENSITIVITY = 0.1;
+
+        // State
+        private Track track;
+        private RURacing simulation;
+        private List<Racer> racers = new ArrayList<>();
+        private Map<String, Point> racerScreenPositions = new HashMap<>(); // Tracks center point of each racer on screen
+        private int baseCellSize = DEFAULT_CELL_SIZE; // Renamed from cellSize
+        private int arcSize = baseCellSize / 2;
+
+        // Zoom and Pan State
+        private double zoomLevel = 1.0;
+        private Point2D.Double viewOffset = new Point2D.Double(0, 0); // Top-left corner in grid units
+        private Point mouseDragStartPoint = null; // For panning
+        private Point2D.Double viewOffsetDragStart = null; // For panning
+
+        // Animation
+        private List<TurnEffect> turnEffects = new ArrayList<>(); // Changed from TeleportationEffect
+        private boolean animating = false;
+        private int animationFrame = 0;
+        private Timer animationTimer;
+
+        public TrackPanel(Track track) {
+            this.track = track;
+            this.simulation = new RURacing(track);
+            setBackground(Color.WHITE);
+            setupAnimationTimer();
+            addZoomAndPanListeners(); // Add listeners
+        }
+
+        private void setupAnimationTimer() {
+            animationTimer = new Timer(ANIMATION_DELAY_MS, e -> {
+                animationFrame++;
+                if (animationFrame >= ANIMATION_FRAMES) {
+                    stopAnimation();
+                }
+                repaint(); // Trigger repaint for each animation frame
+            });
+        }
+
+        public void startAnimation() {
+            if (!turnEffects.isEmpty()) { // Check the generalized list
+                animating = true;
+                animationFrame = 0;
+                animationTimer.restart();
+            } else {
+                // If no effects, ensure repaint happens once
+                repaint();
+            }
+        }
+
+        private void stopAnimation() {
+            animationFrame = 0;
+            animating = false;
+            turnEffects.clear(); // Clear the generalized list
+            if (animationTimer.isRunning()) {
+                animationTimer.stop();
+            }
+            repaint(); // Final repaint in non-animating state
+        }
+
+        // --- Zoom and Pan ---
+        private void addZoomAndPanListeners() {
+            this.addMouseWheelListener(new MouseWheelListener() {
+                @Override
+                public void mouseWheelMoved(MouseWheelEvent e) {
+                    handleZoom(e);
+                }
+            });
+
+            MouseAdapter panAdapter = new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    // Trigger pan on Middle Mouse Button OR Shift + Left Mouse Button
+                    if (SwingUtilities.isMiddleMouseButton(e) || (SwingUtilities.isLeftMouseButton(e))) {
+                        mouseDragStartPoint = e.getPoint();
+                        viewOffsetDragStart = new Point2D.Double(viewOffset.x, viewOffset.y);
+                        setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+                    }
+                }
+
+                @Override
+                public void mouseDragged(MouseEvent e) {
+                    if (mouseDragStartPoint != null && viewOffsetDragStart != null) {
+                        handlePan(e); // Call pan logic during drag
+                    }
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    if (mouseDragStartPoint != null) {
+                        // Reset panning state on release
+                        mouseDragStartPoint = null;
+                        viewOffsetDragStart = null;
+                        setCursor(Cursor.getDefaultCursor());
+                        repaint(); // Repaint once after drag ends for clarity
+                    }
+                }
+            };
+            this.addMouseListener(panAdapter);
+            this.addMouseMotionListener(panAdapter);
+        }
+
+        private void handleZoom(MouseWheelEvent e) {
+            double zoomFactor = Math.pow(1 + ZOOM_SENSITIVITY, -e.getPreciseWheelRotation());
+            double newZoomLevel = zoomLevel * zoomFactor;
+            newZoomLevel = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newZoomLevel)); // Clamp zoom
+
+            if (Math.abs(newZoomLevel - zoomLevel) < 1e-6) return; // No significant change
+
+            Point mousePoint = e.getPoint();
+            Point2D.Double mouseGridPosBefore = screenToGrid(mousePoint);
+
+            zoomLevel = newZoomLevel;
+            double effectiveCellSize = getEffectiveCellSize();
+
+            // Adjust offset to keep the point under the mouse stationary
+            viewOffset.x = mouseGridPosBefore.x - (mousePoint.x - LEFT_PADDING) / effectiveCellSize;
+            viewOffset.y = mouseGridPosBefore.y - (mousePoint.y - TOP_PADDING) / effectiveCellSize;
+
+            clampViewOffset();
+            repaint();
+        }
+
+        private void handlePan(MouseEvent e) {
+            double effectiveCellSize = getEffectiveCellSize();
+            if (effectiveCellSize <= 0) return;
+
+            // Calculate mouse movement delta in screen pixels
+            double dxScreen = e.getX() - mouseDragStartPoint.x;
+            double dyScreen = e.getY() - mouseDragStartPoint.y;
+
+            // Convert screen delta to grid delta
+            double dxGrid = dxScreen / effectiveCellSize;
+            double dyGrid = dyScreen / effectiveCellSize;
+
+            // Update view offset based on starting offset and grid delta
+            // Subtract delta because moving mouse right should move view left (content moves right)
+            viewOffset.x = viewOffsetDragStart.x - dxGrid;
+            viewOffset.y = viewOffsetDragStart.y - dyGrid;
+
+            clampViewOffset(); // Keep view within bounds
+            repaint(); // Redraw with new offset
+        }
+
+        private void clampViewOffset() {
+            Dimension trackSize = getTrackGridDimensions();
+            double effectiveCellSize = getEffectiveCellSize();
+            // Calculate the width/height of the view in grid units
+            double viewWidthGrid = (getWidth() - LEFT_PADDING - RIGHT_PADDING) / effectiveCellSize;
+            double viewHeightGrid = (getHeight() - TOP_PADDING - BOTTOM_PADDING) / effectiveCellSize;
+
+            // Allow panning slightly beyond the edges (e.g., 10% of the view size)
+            double bufferX = viewWidthGrid * 0.1;
+            double bufferY = viewHeightGrid * 0.1;
+
+            // Clamp the view offset
+            // Min offset allows bufferX grid units to the left/top of the track (negative offset)
+            // Max offset allows bufferX grid units to the right/bottom of the track
+            viewOffset.x = Math.max(-bufferX, Math.min(trackSize.width - viewWidthGrid + bufferX, viewOffset.x));
+            viewOffset.y = Math.max(-bufferY, Math.min(trackSize.height - viewHeightGrid + bufferY, viewOffset.y));
+
+            // If the track is smaller than the view (zoomed out), center it
+            if (trackSize.width < viewWidthGrid) {
+                viewOffset.x = (trackSize.width - viewWidthGrid) / 2.0; // Center horizontally
+            }
+            if (trackSize.height < viewHeightGrid) {
+                viewOffset.y = (trackSize.height - viewHeightGrid) / 2.0; // Center vertically
+            }
+        }
+
+        public void resetView() {
+            zoomLevel = 1.0;
+            viewOffset.setLocation(0, 0);
+            calculateBaseCellSize(); // Recalculate base size based on new track if needed
+            clampViewOffset(); // Center if needed after reset
+            repaint();
+        }
+
+        private double getEffectiveCellSize() {
+            return baseCellSize * zoomLevel;
+        }
+
+        // --- Getters and Setters ---
+        public void setTrack(Track track) { this.track = track; }
+        public Track getTrack() { return track; }
+        public void setRacers(List<Racer> racers) { this.racers = racers; }
+        public List<Racer> getRacers() { return racers; }
+        public RURacing getSimulation() { return simulation; }
+        public void setSimulation(RURacing simulation) { this.simulation = simulation; }
+        public Map<String, Point> getRacerScreenPositions() { return racerScreenPositions; }
+        public void setTurnEffects(List<TurnEffect> effects) { this.turnEffects = effects; }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+            setupRenderingHints(g2d);
+            calculateBaseCellSize(); // Ensure base size is up-to-date
+
+            // Store previous screen positions before recalculating
+            Map<String, Point> previousPositionsForAnimation = new HashMap<>(racerScreenPositions);
+            racerScreenPositions.clear(); // Clear for recalculation
+
+            // Calculate current screen positions (needed for teleport effects AND drawing racers)
+            calculateRacerScreenPositions(); // Uses zoom/offset via gridToScreen
+
+            // Apply clipping to the drawing area
+            Shape oldClip = g2d.getClip();
+            g2d.clipRect(LEFT_PADDING, TOP_PADDING, getWidth() - LEFT_PADDING - RIGHT_PADDING, getHeight() - TOP_PADDING - BOTTOM_PADDING);
+
+            // Draw components
+            drawTrackBase(g2d);
+            drawGridOutlines(g2d);
+            drawStartFinish(g2d);
+
+            // Draw racers based on the current state FIRST
+            drawRacers(g2d);
+
+            // Draw turn effects ON TOP only if animating
+            if (animating) {
+                drawTurnEffects(g2d, previousPositionsForAnimation);
+            }
+
+            // Restore clip and draw legend
+            g2d.setClip(oldClip);
+            drawLegend(g2d); // Draw legend last so it's on top and not clipped by track area
+        }
+
+        private void setupRenderingHints(Graphics2D g2d) {
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        }
+
+        private Dimension getTrackGridDimensions() {
+            if (track == null || track.getTrack().isEmpty()) {
+                return new Dimension(1, 1);
+            }
+            int maxX = 0;
+            int maxY = 0;
+            for (Point p : track.getTrack()) {
+                maxX = Math.max(maxX, p.x);
+                maxY = Math.max(maxY, p.y);
+            }
+            return new Dimension(maxX + 1, maxY + 1);
+        }
+
+        private void calculateBaseCellSize() {
+            // Calculate the cell size needed to fit the entire track without zoom
+            Dimension trackSize = getTrackGridDimensions();
+            if (trackSize.width <= 0 || trackSize.height <= 0) {
+                baseCellSize = DEFAULT_CELL_SIZE;
+                arcSize = baseCellSize / 2;
+                return;
+            }
+
+            int availableWidth = getWidth() - LEFT_PADDING - RIGHT_PADDING;
+            int availableHeight = getHeight() - TOP_PADDING - BOTTOM_PADDING;
+
+            baseCellSize = Math.max(1, Math.min(availableWidth / trackSize.width, availableHeight / trackSize.height));
+            arcSize = baseCellSize / 2; // Base arc size
+        }
+
+        private void drawLegend(Graphics2D g2d) {
+            // Semi-transparent background
+            g2d.setColor(new Color(255, 255, 255, 220));
+            g2d.fillRoundRect(10, 10, 180, 180, 10, 10);
+            g2d.setColor(Color.LIGHT_GRAY);
+            g2d.drawRoundRect(10, 10, 180, 180, 10, 10);
+
+            // Title
+            g2d.setFont(new Font("SansSerif", Font.BOLD, 14));
+            g2d.setColor(Color.BLACK);
+            g2d.drawString("Track Visualization", 20, 30);
+
+            g2d.setFont(new Font("SansSerif", Font.PLAIN, 12));
+            int legendY = 45;
+            int itemHeight = 25;
+            int symbolSize = 15;
+            int textX = 40;
+
+            // Start/Finish
+            g2d.setColor(Color.GRAY);
+            g2d.fillRoundRect(20, legendY, symbolSize, symbolSize, 5, 5);
+            g2d.setColor(Color.BLACK);
+            g2d.drawString(" - Start/Finish", textX, legendY + symbolSize - 2);
+            legendY += itemHeight;
+
+            // Track
+            g2d.setColor(Color.DARK_GRAY);
+            g2d.fillRoundRect(20, legendY, symbolSize, symbolSize, 5, 5);
+            g2d.setColor(Color.BLACK);
+            g2d.drawString(" - Track", textX, legendY + symbolSize - 2);
+            legendY += itemHeight;
+
+            // Racers
+            // Use a temporary list to avoid concurrent modification if racers change
+            List<Racer> currentRacers = new ArrayList<>(this.racers);
+            for (Racer racer : currentRacers) {
+                if (legendY > 180) break; // Don't overflow legend box
+                g2d.setColor(getRacerColor(racer.getName()));
+                g2d.fillOval(20, legendY, symbolSize, symbolSize);
+                g2d.setColor(Color.BLACK);
+                g2d.drawString(" - " + racer.getName(), textX, legendY + symbolSize - 2);
+                legendY += itemHeight - 5; // Slightly less spacing for racers
+            }
+        }
+
+        private void drawTrackBase(Graphics2D g2d) {
+            if (track == null || track.getTrack().isEmpty()) return;
+
+            double effectiveCellSize = getEffectiveCellSize();
+
+            g2d.setColor(Color.DARK_GRAY);
+            // Scale stroke width with zoom, but clamp to avoid extreme thickness/thinness
+            float strokeWidth = (float) Math.max(1.0, Math.min(effectiveCellSize, baseCellSize * zoomLevel));
+            g2d.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+            Point[] trackPoints = track.getTrack().toArray(new Point[0]);
+            for (int i = 0; i < trackPoints.length; i++) {
+                Point current = trackPoints[i];
+                Point next = trackPoints[(i + 1) % trackPoints.length]; // Wrap around
+
+                Point p1 = gridToScreen(current); // Uses zoom/offset
+                Point p2 = gridToScreen(next);   // Uses zoom/offset
+
+                // Adjust draw position to center the stroke
+                double halfStroke = effectiveCellSize / 2.0;
+                g2d.drawLine((int) (p1.x + halfStroke), (int) (p1.y + halfStroke),
+                             (int) (p2.x + halfStroke), (int) (p2.y + halfStroke));
+            }
+        }
+
+        private void drawGridOutlines(Graphics2D g2d) {
+            if (track == null || track.getTrack().isEmpty()) return;
+
+            double effectiveCellSize = getEffectiveCellSize();
+            if (effectiveCellSize < 5) return; // Don't draw grid if cells are too small
+
+            Dimension trackSize = getTrackGridDimensions();
+            int maxX = trackSize.width - 1;
+            int maxY = trackSize.height - 1;
+
+            g2d.setColor(new Color(200, 200, 200)); // Light gray
+            g2d.setStroke(new BasicStroke(1.0f));
+
+            // Determine visible grid range based on viewOffset and panel size
+            Point2D.Double topLeftDouble = screenToGrid(new Point(LEFT_PADDING, TOP_PADDING));
+            Point2D.Double bottomRightDouble = screenToGrid(new Point(getWidth() - RIGHT_PADDING, getHeight() - BOTTOM_PADDING));
+
+            Point topLeft = new Point((int) Math.floor(topLeftDouble.x), (int) Math.floor(topLeftDouble.y));
+            Point bottomRight = new Point((int) Math.ceil(bottomRightDouble.x), (int) Math.ceil(bottomRightDouble.y));
+
+            int startX = Math.max(0, topLeft.x);
+            int endX = Math.min(maxX, bottomRight.x);
+            int startY = Math.max(0, topLeft.y);
+            int endY = Math.min(maxY, bottomRight.y);
+
+            // Draw only visible lines
+            for (int y = startY; y <= endY + 1; y++) {
+                Point p1 = gridToScreen(new Point(startX, y));
+                Point p2 = gridToScreen(new Point(endX + 1, y));
+                g2d.drawLine(p1.x, p1.y, p2.x, p1.y);
+            }
+            for (int x = startX; x <= endX + 1; x++) {
+                Point p1 = gridToScreen(new Point(x, startY));
+                Point p2 = gridToScreen(new Point(x, endY + 1));
+                g2d.drawLine(p1.x, p1.y, p1.x, p2.y);
+            }
+        }
+
+        private void drawStartFinish(Graphics2D g2d) {
+            if (track == null || track.getStartFinish() == null) return;
+
+            double effectiveCellSize = getEffectiveCellSize();
+            int effectiveArcSize = (int) Math.max(5, arcSize * zoomLevel); // Ensure minimum arc size
+
+            Point startFinish = track.getStartFinish();
+            Point screenPos = gridToScreen(startFinish); // Uses zoom/offset
+
+            g2d.setColor(Color.GRAY);
+            g2d.fillRoundRect(screenPos.x, screenPos.y, (int) effectiveCellSize, (int) effectiveCellSize, effectiveArcSize, effectiveArcSize);
+
+            // Draw "S/F" text only if cell is large enough
+            if (effectiveCellSize >= 15) {
+                g2d.setColor(Color.WHITE);
+                int fontSize = Math.max(10, (int) (effectiveCellSize / 3));
+                g2d.setFont(new Font("SansSerif", Font.BOLD, fontSize));
+                FontMetrics fm = g2d.getFontMetrics();
+                String text = "S/F";
+                int textWidth = fm.stringWidth(text);
+                int textHeight = fm.getAscent();
+                g2d.drawString(text, screenPos.x + (int) (effectiveCellSize - textWidth) / 2,
+                               screenPos.y + (int) (effectiveCellSize + textHeight) / 2 - fm.getDescent());
+            }
+        }
+
+        /** Calculates and stores the screen center positions for all current racers. */
+        private void calculateRacerScreenPositions() {
+            Map<Point, List<Racer>> racersByGridPos = groupRacersByPosition();
+            double effectiveCellSize = getEffectiveCellSize();
+
+            for (Map.Entry<Point, List<Racer>> entry : racersByGridPos.entrySet()) {
+                Point gridPos = entry.getKey();
+                List<Racer> racersAtPos = entry.getValue();
+                Point cellScreenPos = gridToScreen(gridPos); // Top-left of the cell, uses zoom/offset
+
+                int numRacers = racersAtPos.size();
+                int cols = (int) Math.ceil(Math.sqrt(numRacers));
+                int rows = (int) Math.ceil(numRacers / (double) cols);
+
+                // Scale racer size and padding with zoom
+                int baseRacerSize = Math.max(4, Math.min(baseCellSize / Math.max(cols, rows), baseCellSize / 2));
+                int effectiveRacerSize = Math.max(4, (int)(baseRacerSize * zoomLevel));
+                int padding = Math.max(1, effectiveRacerSize / 4);
+
+                int gridWidth = cols * (effectiveRacerSize + padding) - padding;
+                int gridHeight = rows * (effectiveRacerSize + padding) - padding;
+                int startX = cellScreenPos.x + (int) (effectiveCellSize - gridWidth) / 2;
+                int startY = cellScreenPos.y + (int) (effectiveCellSize - gridHeight) / 2;
+
+                for (int i = 0; i < numRacers; i++) {
+                    Racer racer = racersAtPos.get(i);
+                    int row = i / cols;
+                    int col = i % cols;
+                    int racerX = startX + col * (effectiveRacerSize + padding);
+                    int racerY = startY + row * (effectiveRacerSize + padding);
+
+                    // Store the CENTER position
+                    racerScreenPositions.put(racer.getName(), new Point(racerX + effectiveRacerSize / 2, racerY + effectiveRacerSize / 2));
+                }
+            }
+        }
+
+        private void drawRacers(Graphics2D g2d) {
+            Map<Point, List<Racer>> racersByGridPos = groupRacersByPosition();
+
+            for (Map.Entry<Point, List<Racer>> entry : racersByGridPos.entrySet()) {
+                List<Racer> racersAtPos = entry.getValue();
+                int numRacers = racersAtPos.size();
+                int cols = (int) Math.ceil(Math.sqrt(numRacers));
+                int rows = (int) Math.ceil(numRacers / (double) cols);
+
+                // Recalculate effective racer size for drawing
+                int baseRacerSize = Math.max(4, Math.min(baseCellSize / Math.max(cols, rows), baseCellSize / 2));
+                int effectiveRacerSize = Math.max(4, (int)(baseRacerSize * zoomLevel));
+
+                for (Racer racer : racersAtPos) {
+                    Point centerPos = racerScreenPositions.get(racer.getName());
+                    if (centerPos != null) {
+                        // Calculate top-left from center for drawing
+                        drawSingleRacer(g2d, racer, centerPos.x - effectiveRacerSize / 2, centerPos.y - effectiveRacerSize / 2, effectiveRacerSize);
+                    }
+                }
+            }
+        }
+
+        private void drawSingleRacer(Graphics2D g2d, Racer racer, int x, int y, int size) {
+            g2d.setColor(getRacerColor(racer.getName()));
+            g2d.fillOval(x, y, size, size);
+
+            // Draw symbol only if size is sufficient
+            if (size >= 12) { // Threshold for drawing symbol
+                g2d.setColor(Color.WHITE);
+                int fontSize = Math.max(8, size / 2);
+                g2d.setFont(new Font("SansSerif", Font.BOLD, fontSize));
+                FontMetrics fm = g2d.getFontMetrics();
+                String symbol = racer.getSymbol();
+                int textWidth = fm.stringWidth(symbol);
+                int textHeight = fm.getAscent();
+                // Center symbol in the oval
+                g2d.drawString(symbol,
+                               x + (size - textWidth) / 2,
+                               y + (size + textHeight) / 2 - fm.getDescent());
+            }
+        }
+
+        private Map<Point, List<Racer>> groupRacersByPosition() {
+            Map<Point, List<Racer>> map = new HashMap<>();
+            // Use a temporary list to avoid concurrent modification
+            List<Racer> currentRacers = new ArrayList<>(this.racers);
+            for (Racer racer : currentRacers) {
+                map.computeIfAbsent(racer.getPosition(), k -> new ArrayList<>()).add(racer);
+            }
+            return map;
+        }
+
+        private void drawTurnEffects(Graphics2D g2d, Map<String, Point> previousScreenPositions) {
+            // Effects use racerScreenPositions (current) and previousScreenPositions
+            // Need to ensure effect drawing scales with zoom
+            for (TurnEffect effect : turnEffects) {
+                if (effect instanceof TeleportEffect) {
+                    // Pass previous *screen* position if available, otherwise calculate from grid
+                    Point prevScreen = ((TeleportEffect) effect).previousScreenPos;
+                    if (prevScreen == null) {
+                        prevScreen = gridToScreenCenter(((TeleportEffect) effect).from);
+                    }
+                    drawTeleportEffect(g2d, (TeleportEffect) effect, prevScreen);
+                } else if (effect instanceof ChargeEffect) {
+                    drawChargeEffect(g2d, (ChargeEffect) effect);
+                }
+            }
+        }
+
+        private void drawTeleportEffect(Graphics2D g2d, TeleportEffect effect, Point fromScreenPos) {
+            Point toScreenPos = racerScreenPositions.get(effect.racerName); // Use current calculated position
+
+            if (toScreenPos == null) {
+                toScreenPos = gridToScreenCenter(effect.to); // Fallback
+            }
+
+            double effectiveCellSize = getEffectiveCellSize();
+
+            if (animationFrame < PATH_FRAMES) {
+                // Phase 1: Draw path and fading racer at start
+                drawTeleportPath(g2d, effect, fromScreenPos, toScreenPos);
+                drawFadingRacerAtStart(g2d, effect, fromScreenPos, effectiveCellSize);
+            } else {
+                // Phase 2: Draw moving particles and flash at end
+                drawTeleportMovement(g2d, effect, fromScreenPos, toScreenPos, effectiveCellSize); // Pass size
+            }
+        }
+
+        private void drawTeleportPath(Graphics2D g2d, TeleportEffect effect, Point from, Point to) {
+            Color racerColor = getRacerColor(effect.racerName);
+            Color trailColor = new Color(racerColor.getRed(), racerColor.getGreen(), racerColor.getBlue(), 128); // Semi-transparent
+
+            float dashPhase = (float) (animationFrame % 10);
+            float strokeWidth = Math.max(1f, (float)(3 * zoomLevel)); // Scale stroke
+            float[] dash = { Math.max(2f, 5f * (float)zoomLevel), Math.max(2f, 5f * (float)zoomLevel) }; // Scale dash pattern
+            g2d.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, dash, dashPhase));
+            g2d.setColor(trailColor);
+            g2d.drawLine(from.x, from.y, to.x, to.y);
+        }
+
+        private void drawFadingRacerAtStart(Graphics2D g2d, TeleportEffect effect, Point startPos, double effectiveCellSize) {
+            int transparency = 255 - (animationFrame * (255 / PATH_FRAMES));
+            transparency = Math.max(0, Math.min(255, transparency)); // Clamp
+
+            Color racerColor = getRacerColor(effect.racerName);
+            Color fadedColor = new Color(racerColor.getRed(), racerColor.getGreen(), racerColor.getBlue(), transparency);
+
+            g2d.setColor(fadedColor);
+
+            // Calculate size consistent with drawSingleRacer (assuming 1 racer for simplicity here)
+            int baseRacerSize = Math.max(4, Math.min(baseCellSize, baseCellSize / 2)); // Simplified base size
+            int effectiveRacerSize = Math.max(4, (int)(baseRacerSize * zoomLevel));
+
+            g2d.fillOval(startPos.x - effectiveRacerSize / 2, startPos.y - effectiveRacerSize / 2, effectiveRacerSize, effectiveRacerSize);
+        }
+
+        private void drawTeleportMovement(Graphics2D g2d, TeleportEffect effect, Point from, Point to, double effectiveCellSize) {
+            double progress = (double) (animationFrame - PATH_FRAMES) / (ANIMATION_FRAMES - PATH_FRAMES);
+            progress = Math.max(0, Math.min(1, progress)); // Clamp progress
+
+            Color racerColor = getRacerColor(effect.racerName);
+            g2d.setColor(racerColor);
+            float strokeWidth = Math.max(1f, (float)(3 * zoomLevel)); // Scale stroke
+            g2d.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+            // Draw particles along the path
+            int particleBaseSize = Math.max(2, (int)(8 * zoomLevel)); // Scale particle size
+            for (int i = 0; i < 5; i++) {
+                // Spread particles along the path, cycling
+                double particleProgress = (progress + (double) i / 5.0) % 1.0;
+                int px = (int) (from.x + (to.x - from.x) * particleProgress);
+                int py = (int) (from.y + (to.y - from.y) * particleProgress);
+
+                // Particles shrink as they move
+                int size = (int) (particleBaseSize * (1.0 - particleProgress));
+                if (size > 1) {
+                    g2d.fillOval(px - size / 2, py - size / 2, size, size);
+                }
+            }
+
+            // Draw flash at destination near the end
+            if (progress > 0.8) {
+                double flashProgress = (progress - 0.8) / 0.2; // 0.0 to 1.0
+                int flashSize = Math.max(1, (int) (effectiveCellSize * flashProgress)); // Scale flash
+                int alpha = (int) (200 * (1.0 - flashProgress)); // Fade out
+                Color flashColor = new Color(255, 255, 255, Math.max(0, alpha));
+                g2d.setColor(flashColor);
+                g2d.fillOval(to.x - flashSize / 2, to.y - flashSize / 2, flashSize, flashSize);
+            }
+        }
+
+        private void drawChargeEffect(Graphics2D g2d, ChargeEffect effect) {
+            Point racerCenterPos = racerScreenPositions.get(effect.racerName);
+            if (racerCenterPos == null) {
+                racerCenterPos = gridToScreenCenter(effect.position); // Fallback if not found
+            }
+
+            double effectiveCellSize = getEffectiveCellSize();
+
+            // Simple pulsing yellow circle animation
+            float pulseProgress = (float) (animationFrame % ANIMATION_FRAMES) / ANIMATION_FRAMES; // 0.0 to 1.0 cycle
+            float scale = 1.0f + 0.5f * (float) Math.sin(pulseProgress * Math.PI); // Expands and contracts
+            int alpha = 150 - (int) (100 * Math.abs(pulseProgress - 0.5) * 2); // Fades in and out
+
+            int baseSize = (int) (effectiveCellSize / 2); // Scale base size
+            int currentSize = Math.max(1, (int) (baseSize * scale));
+            int x = racerCenterPos.x - currentSize / 2;
+            int y = racerCenterPos.y - currentSize / 2;
+
+            Color chargeColor = new Color(255, 223, 0, Math.max(0, Math.min(255, alpha))); // Yellow, semi-transparent
+
+            g2d.setColor(chargeColor);
+            g2d.fillOval(x, y, currentSize, currentSize);
+
+            // Optional: Add small sparks (scale sparks too)
+            if (effectiveCellSize > 10) { // Only draw sparks if reasonably zoomed
+                g2d.setColor(new Color(255, 255, 100, alpha)); // Lighter yellow
+                int sparkCount = 5;
+                int sparkLength = Math.max(2, (int)(5 * zoomLevel)); // Scale spark length
+                for (int i = 0; i < sparkCount; i++) {
+                    double angle = (pulseProgress * 2 * Math.PI) + (i * 2 * Math.PI / sparkCount);
+                    int startX = racerCenterPos.x + (int) (baseSize / 2 * Math.cos(angle));
+                    int startY = racerCenterPos.y + (int) (baseSize / 2 * Math.sin(angle));
+                    int endX = startX + (int) (sparkLength * Math.cos(angle));
+                    int endY = startY + (int) (sparkLength * Math.sin(angle));
+                    g2d.drawLine(startX, startY, endX, endY);
+                }
+            }
+        }
+
+        // --- Coordinate Conversion ---
+        private Point gridToScreen(Point gridPos) {
+            double effectiveCellSize = getEffectiveCellSize();
+            int screenX = LEFT_PADDING + (int) ((gridPos.x - viewOffset.x) * effectiveCellSize);
+            int screenY = TOP_PADDING + (int) ((gridPos.y - viewOffset.y) * effectiveCellSize);
+            return new Point(screenX, screenY);
+        }
+
+        private Point gridToScreenCenter(Point gridPos) {
+            double effectiveCellSize = getEffectiveCellSize();
+            int screenX = LEFT_PADDING + (int) ((gridPos.x - viewOffset.x + 0.5) * effectiveCellSize);
+            int screenY = TOP_PADDING + (int) ((gridPos.y - viewOffset.y + 0.5) * effectiveCellSize);
+            return new Point(screenX, screenY);
+        }
+
+        private Point2D.Double screenToGrid(Point screenPos) {
+            double effectiveCellSize = getEffectiveCellSize();
+            if (effectiveCellSize <= 0) {
+                return new Point2D.Double(0, 0); // Avoid division by zero
+            }
+            double gridX = viewOffset.x + (double) (screenPos.x - LEFT_PADDING) / effectiveCellSize;
+            double gridY = viewOffset.y + (double) (screenPos.y - TOP_PADDING) / effectiveCellSize;
+            return new Point2D.Double(gridX, gridY);
+        }
+
+        private Color getRacerColor(String racerName) {
+            int hashCode = racerName.hashCode();
+            float hue = (float) (Math.abs(hashCode % 360)) / 360.0f;
+            float saturation = 0.7f + (float) (Math.abs((hashCode / 360) % 30)) / 100.0f;
+            float brightness = 0.8f + (float) (Math.abs((hashCode / 360 / 30) % 20)) / 100.0f;
+
+            switch (racerName) {
+                case "ScarletKnight": return Color.RED;
+                case "StarbucksTruck": return new Color(0, 100, 0);
+                case "LogNExpress": return Color.BLUE;
+                case "NLogNExpress": return new Color(128, 0, 128);
+                default: return Color.getHSBColor(hue, saturation, brightness);
+            }
+        }
+    }
+
+    static abstract class TurnEffect {
+        String racerName;
+
+        public TurnEffect(String racerName) {
+            this.racerName = racerName;
+        }
+    }
+
+    static class TeleportEffect extends TurnEffect {
+        Point from;
+        Point to;
+        Point previousScreenPos;
+
+        public TeleportEffect(String racerName, Point from, Point to, Point previousScreenPos) {
+            super(racerName);
+            this.from = from;
+            this.to = to;
+            this.previousScreenPos = previousScreenPos;
+        }
+    }
+
+    static class ChargeEffect extends TurnEffect {
+        Point position;
+
+        public ChargeEffect(String racerName, Point position) {
+            super(racerName);
+            this.position = position;
+        }
+    }
+}
+          </pre></div>
+          
+<div class="file-pane" id="p10f3"><pre>
+import java.awt.Point;
+
+
+/**
+ * The Racer class represents a participant in the RU Racing simulation.
+ * 
+ * Each racer has a position on the track, a battery that needs to be charged,
+ * and the ability to teleport using the ScarletTeleporterTM.
+ * Racers can only perform one action per simulation step - either charge their battery or teleport.
+ * Different racers have different charging requirements based on their algorithmic strategy.
+ * 
+ * A racer completes the race when they return to the starting position after
+ * traveling the full distance of the track.
+ */
+public class Racer {
+    private String name;
+    private String symbol;
+    private Point position;
+    private int distance;
+    private int battery;
+    private int chargeTime;
+    private long actions; // Renamed from turn
+    private Track track;
+    private RacerHistory history;
+    
+    /**
+     * Creates a new racer with the specified properties.
+     * 
+     * @param name The name of the racer (e.g., "ScarletKnight", "StarbucksTruck")
+     * @param symbol The visual symbol representing the racer (e.g., "⚔", "🚚")
+     * @param track The track on which the racer will compete
+     * @param chargeActions The number of actions needed to fully charge the battery
+     *                   (0 for racers that don't require charging)
+     * @throws IllegalArgumentException if any parameters are invalid
+     */
+    public Racer(String name, String symbol, Track track, int chargeActions) {
+        if (chargeActions < 0) {
+            throw new IllegalArgumentException("Charge actions must be greater than or equal to 0.");
+        }
+        if (name == null || track == null) {
+            throw new IllegalArgumentException("Name, startFinish, and track cannot be null.");
+        }
+        if (track.getLength() == 0) {
+            throw new IllegalArgumentException("Track cannot be empty.");
+        }
+        
+        this.name = name;
+        this.symbol = symbol;
+        this.distance = 0;
+        this.track = track;
+        this.position = track.getStartFinish();
+        this.actions = 0;
+        this.battery = chargeActions;
+        this.chargeTime = chargeActions;
+    }
+
+    
+    public void useScarletTeleporterTM(int distance) {
+        // Is the battery sufficient?
+        if (battery < chargeTime) {
+            throw new IllegalArgumentException("The battery is not charged fully!");
+        }
+
+        int i = track.getIndex(position);
+        if (i == -1) {
+            throw new IllegalArgumentException("Current racer position not found in track.");
+        }
+
+        // Move the racer forward by the distance
+        int newIndex = i + distance;
+        this.distance += distance;
+        if (this.distance > track.getLength()) {
+            throw new IllegalArgumentException("You went past the finish line!");
+        }
+
+        position = track.getPoint(newIndex % track.getLength());
+        // Reset the battery
+        this.battery = 0;
+
+        finishAction();
+
+        if (history != null) {
+            history.onRacerUpdate(this);
+        }
+    }
+
+
+    public void chargeBattery() {
+        // Is the battery already charged?
+        if (battery >= chargeTime) {
+            throw new IllegalArgumentException("The battery is already charged!");
+        }
+
+        ++this.battery;
+
+        finishAction();
+
+        if (history != null) {
+            history.onRacerUpdate(this);
+        }
+    }
+
+
+    public void finishAction() {
+        ++this.actions;
+    }
+
+    
+    public boolean hasFinishedRace() {
+        return position.equals(track.getStartFinish()) && distance == track.getLength();
+    }
+    
+    
+    public String getName() {
+        return name;
+    }
+    
+    
+    public Point getPosition() {
+        return position;
+    }
+    
+    
+    public int getDistance() {
+        return distance;
+    }
+    
+   
+    public Track getTrack() {
+        return track;
+    }
+    
+    
+    public int getBattery() {
+        return battery;
+    }
+    
+    
+    public long getActionsCount() {
+        return actions;
+    }
+
+   
+    public int getChargeTime() {
+        return chargeTime;
+    }
+
+    
+    public String getSymbol() {
+        return symbol;
+    }
+
+    
+    public RacerHistory getHistory() {
+        return history;
+    }
+    
+    
+    public void setHistory(RacerHistory history) {
+        this.history = history;
+    }
+
+    
+    public Racer clone() {
+        Racer copy = new Racer(name, symbol, track, chargeTime);
+        copy.position = position;
+        copy.distance = distance;
+        copy.battery = battery;
+        copy.actions = actions;
+        return copy;
+    }
+}
+          </pre></div>
+
+<div class="file-pane" id="p10f4"><pre>
+import java.util.ArrayList;
+import java.util.List;
+
+public class RacerHistory {
+    private List<Racer> snapshots;
+
+    public RacerHistory() {
+        this.snapshots = new ArrayList<>();
+    }
+
+    public void onRacerUpdate(Racer racer) {
+        snapshots.add(racer.clone());
+    }
+
+    /**
+     * Gets the state of the racer after a specific action number (history step).
+     * @param actionIndex The index corresponding to the action number (0-based).
+     * @return The Racer state at that point in history.
+     * @throws IllegalArgumentException if the action index is invalid.
+     */
+    public Racer getActionSnapshot(int actionIndex) {
+        if (actionIndex < 0 || actionIndex >= snapshots.size()) {
+            throw new IllegalArgumentException("Invalid action index.");
+        }
+        return snapshots.get(actionIndex);
+    }
+
+    public int size() {
+        return snapshots.size();
+    }
+}
+          </pre></div>
+
+          <div class="file-pane" id="p10f5"><pre>
+import java.awt.Point;
+import java.util.List;
+import java.util.ArrayList;
+public class Track {
+    private List<Point> track;
+    private int length;
+    private int maxX;
+    private int maxY;
+    private Point startFinish;
+
+    public Track(String filename) {
+        StdIn.setFile(filename);
+        String[] lines = StdIn.readAllLines();
+        if (lines.length == 0) {
+            throw new IllegalArgumentException("Track file is empty.");
+        }
+
+        for (String line : lines) {
+            maxX = Math.max(maxX, line.length() - 1);
+        }
+        maxY = lines.length - 1;
+
+        Point firstPoint = null;
+        char[][] track2D = new char[maxY + 1][maxX + 1];
+        for (int y = 0; y <= maxY; y++) {
+            String line = lines[y];
+            for (int x = 0; x <= maxX; x++) {
+                track2D[y][x] = x < line.length() ? line.charAt(x) : ' ';
+                if (track2D[y][x] == 'S' && startFinish == null) {
+                    startFinish = new Point(x, y);
+                }
+                if (firstPoint == null) {
+                    firstPoint = new Point(x, y);
+                }
+            }
+        }
+        if (startFinish == null) {
+            throw new IllegalArgumentException("Start/Finish point not found in track.");
+        }
+        if (firstPoint == null) {
+            throw new IllegalArgumentException("No points found in track.");
+        }
+
+        track = new ArrayList<>();
+        Point currentPoint = firstPoint;
+        int[][] directions = {
+                { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 },
+                { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 }
+        };
+
+        while (!track.contains(currentPoint)) {
+            track.add(currentPoint);
+            boolean moved = false;
+
+            for (int[] dir : directions) {
+                int newX = currentPoint.x + dir[0];
+                int newY = currentPoint.y + dir[1];
+
+                if (newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
+                    char c = track2D[newY][newX];
+                    Point nextPoint = new Point(newX, newY);
+                    if ((c == '#' || c == 'S') && !track.contains(nextPoint)) {
+                        currentPoint = nextPoint;
+                        moved = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!moved) {
+                break; // No more moves found — maybe open shape or endpoint
+            }
+        }
+
+        this.length = track.size();
+        System.out.println("Track length: " + length);
+    }
+
+    public Track(List<Point> track, Point startFinish) {
+        if (track == null || track.isEmpty()) {
+            throw new IllegalArgumentException("Track cannot be null or empty.");
+        }
+        if (startFinish == null) {
+            throw new IllegalArgumentException("Start/Finish point cannot be null.");
+        }
+        if (!track.contains(startFinish)) {
+            throw new IllegalArgumentException("Start/Finish point must be part of the track.");
+        }
+        this.track = List.copyOf(track);
+        this.startFinish = startFinish;
+        this.length = track.size();
+    }
+
+    public List<Point> getTrack() {
+        return track;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public Point getPoint(int index) {
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException("Index out of bounds for track length.");
+        }
+        return track.get(index);
+    }
+
+    public int getIndex(Point point) {
+        int index = track.indexOf(point);
+        if (index == -1) {
+            throw new IllegalArgumentException("Point not found in track.");
+        }
+        return index;
+    }
+
+    public Point getStartFinish() {
+        return startFinish;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y <= maxY; y++) {
+            for (int x = 0; x <= maxX; x++) {
+                Point p = new Point(x, y);
+                if (track.contains(p)) {
+                    if (p.equals(startFinish)) {
+                        sb.append("FINISH"); // Start/Finish point
+                    } else {
+                        sb.append('#'); // Track point
+                    }
+                } else {
+                    sb.append(' '); // Empty space
+                }
+            }
+            sb.append('\n');
+        }
+
+        return sb.toString();
+    }
+}
+          </pre></div>
+
+          <div class="file-pane" id="p10f6"><pre>
+########
+S       #
+#      #
+########
+          </pre></div>
+
+          <div class="file-pane" id="p10f7"><pre>
+##
+S#
+          </pre></div>
+          </div>
+          </div>
+          
+
+
+    </section>
+<!--end project 10 -->
+
+  <script>
+    document.querySelectorAll('.file-tabs').forEach(tabGroup => {
+      tabGroup.querySelectorAll('.file-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const card = tabGroup.closest('.project-card');
+          card.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+          card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          card.querySelector('#' + tab.dataset.file).classList.add('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
