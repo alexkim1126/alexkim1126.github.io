@@ -170,6 +170,9 @@
     }
 
     .file-pane.active { display: block; }
+    .project-files.collapsed .file-pane {
+  display: none;
+}
 
     pre {
       background: #f7f8fa;
@@ -3193,18 +3196,37 @@ S#
 <!--end project 10 -->
 
   <script>
-    document.querySelectorAll('.file-tabs').forEach(tabGroup => {
-      tabGroup.querySelectorAll('.file-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          const card = tabGroup.closest('.project-card');
-          card.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+  // Collapsible file sections
+  document.querySelectorAll('.file-tabs').forEach(tabGroup => {
+    const card = tabGroup.closest('.project-card');
+    const filesSection = tabGroup.closest('.project-files');
+
+    // Start collapsed
+    tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+    card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
+    filesSection.classList.add('collapsed');
+
+    tabGroup.querySelectorAll('.file-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const isActive = tab.classList.contains('active');
+
+        // If clicking the already-active tab, collapse everything
+        if (isActive) {
+          tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+          card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
+          filesSection.classList.add('collapsed');
+        } else {
+          // Switch to this tab and expand
+          tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
           card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
           tab.classList.add('active');
           card.querySelector('#' + tab.dataset.file).classList.add('active');
-        });
+          filesSection.classList.remove('collapsed');
+        }
       });
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
