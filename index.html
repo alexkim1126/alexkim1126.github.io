@@ -329,6 +329,7 @@ public class Multiples {
   <div class="tags">
           <span class="tag">Java</span><span class="tag">Conditionals</span>
         </div>
+       </div>
         <div class="project-files">
           <div class="file-tabs" data-group="project3">
             <div class="file-tab active" data-file="p3f1">RoadTrip.java</div>
@@ -379,6 +380,7 @@ public class RoadTrip {
 <div class="tags">
           <span class="tag">Java</span><span class="tag">Conditionals</span><span class="tag">Loops</span>
         </div>
+       </div>
         <div class="project-files">
           <div class="file-tabs" data-group="project4">
             <div class="file-tab active" data-file="p4f1">Buses.Java</div>
@@ -421,6 +423,7 @@ public class Buses {
 <div class="tags">
           <span class="tag">Java</span><span class="tag">Conditionals</span><span class="tag">Loops</span>
         </div>
+       </div>
         <div class="project-files">
           <div class="file-tabs" data-group="project5">
             <div class="file-tab active" data-file="p5f1">DogWalker.java</div>
@@ -461,8 +464,8 @@ public class DogWalker {
 
       <!-- project 6 -->
       <div class="project-card">
-        <div class="project-header">
-          <div class="project-title">Rutgers CS111 - 1D & 2D Arrays - Health Monitor</div>
+        <div class="project-header"> 
+        <div class="project-title">Rutgers CS111 - 1D & 2D Arrays - Health Monitor</div>
           <p class="project-desc">Prompt: Write a program, HealthMonitor.java, that takes the 7 double arguments and then 4 char arguments from the command line and then does calculations to determine the health level of that patient. Assume that 7 double inputs >= 0, the first char is either M or F (for Male or Female), the last three char inputs are specific values. To compute the total health score use: um of all (Points Calculation × Weight) products. To determine if the patient is healthy, average or unhealthy use these ranges: 
 Male:
      • Healthy: >7.5
@@ -473,10 +476,13 @@ Female:
      • Healthy: > 7.0
      • Average: 6.0-7.0 (inclusive)
      • Unhealthy: < 6.0
+                    
     </p>
     <div class="tags">
           <span class="tag">1D Arrays</span><span class="tag">2D Arrays</span><span class="tag">Java</span>
         </div>
+     </div> 
+          
         <div class="project-files">
           <div class="file-tabs" data-group="project6">
             <div class="file-tab active" data-file="p6f1">HealthMonitor.java</div>
@@ -583,8 +589,9 @@ public class HealthMonitor {
  }
 
           </pre></div>
-        </div>
-      </div>
+        </div> 
+       </div> 
+    
       <!-- end project 6 -->
 
       <!--project 7 -->
@@ -592,9 +599,11 @@ public class HealthMonitor {
         <div class="project-header">
           <div class="project-title">Rutgers CS111 - 1D & 2D Arrays - Egyptian Pyramid</div>
           <p class="project-desc">Prompt: Code a program-taking in two tentative parameters from the terminal representing 1: the overall size of their figure and 2: the number of bricks provided-to build a pyramid. Create and use a 2D array to create the pyramid. Bricks, denoted by the symbol ‘X’ (capital X), should be placed beginning at the bottom left and continue until either we run out of bricks or the pyramid is complete. The surrounding area should be filled with the symbol ‘=’. Be sure to include a statement detailing the number of bricks remaining, in the format listed below. Keep in mind that the output should be PRINTED into the terminal.</p>
+         
           <div class="tags">
           <span class="tag">1D Arrays</span><span class="tag">2D Arrays</span><span class="tag">Java</span>
         </div>
+      </div> 
         <div class="project-files">
           <div class="file-tabs" data-group="project7">
             <div class="file-tab active" data-file="p7f1">EgyptianPyramid.java</div>
@@ -3195,33 +3204,27 @@ S#
     </section>
 <!--end project 10 -->
 
-  <script>
-  // Collapsible file sections
-  document.querySelectorAll('.file-tabs').forEach(tabGroup => {
-    const card = tabGroup.closest('.project-card');
-    const filesSection = tabGroup.closest('.project-files');
+ <script>
+  document.querySelectorAll('.project-files').forEach(filesSection => {
+    const card = filesSection.closest('.project-card');
+    const allPanes = card.querySelectorAll('.file-pane');
+    const allTabs = filesSection.querySelectorAll('.file-tab');
 
-    // Start collapsed
-    tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
-    card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
-    filesSection.classList.add('collapsed');
+    // Collapse everything on load
+    allPanes.forEach(p => p.style.display = 'none');
+    allTabs.forEach(t => t.classList.remove('active'));
 
-    tabGroup.querySelectorAll('.file-tab').forEach(tab => {
+    allTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const isActive = tab.classList.contains('active');
 
-        // If clicking the already-active tab, collapse everything
-        if (isActive) {
-          tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
-          card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
-          filesSection.classList.add('collapsed');
-        } else {
-          // Switch to this tab and expand
-          tabGroup.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
-          card.querySelectorAll('.file-pane').forEach(p => p.classList.remove('active'));
+        allTabs.forEach(t => t.classList.remove('active'));
+        allPanes.forEach(p => p.style.display = 'none');
+
+        if (!isActive) {
           tab.classList.add('active');
-          card.querySelector('#' + tab.dataset.file).classList.add('active');
-          filesSection.classList.remove('collapsed');
+          const pane = card.querySelector('#' + tab.dataset.file);
+          if (pane) pane.style.display = 'block';
         }
       });
     });
