@@ -271,7 +271,7 @@
           <div class="file-tabs" data-group="project1">
             <div class="file-tab active" data-file="p1f1">Welcome.java</div>
             </div>
-          <div class="file-pane active" id="p2f1"><pre>
+          <div class="file-pane active" id="p1f1"><pre>
     public class Welcome {
     public static void main(String[] args) {
 
@@ -3201,6 +3201,288 @@ S#
 
     </section>
 <!--end project 10 -->
+
+              
+              <!-- project 11 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title"> Valuator </div>
+          <p class="project-desc">
+            I started out with an idea to create an automated stock valuator on Python that would allow me to focus more on forming my thesis from market research, using the conclusions from Python as a check (usually valuations take the longest for me, I don’t think many people find exuberance when reading through 10-K’s). 
+If I wanted to pitch a stock, recommend one to a friend, or invest, this would be the tool I’d use. I didn’t want it to be completely automated, though, I wanted some oversight throughout the process. My style of investment research is incredibly sector-oriented. I want to find a stock with the best multiples in an industry, and though a DCF could give some insight as to a company’s cash flows, it didn’t quite give me the answers I was looking for. 
+Using Comparable Company Analysis (comps) considers the fact that a hyperscaler like NVDA will need to use different assumptions, operates in a different sector, and is less cash-flow oriented as a more stable TJX. 
+How the program works: When you input a ticker symbol, it will connect to the yfinance API, be matched to a sector and return a pre-set number of comparable companies within that sector. From here, you are able to proceed with those companies by pressing the Enter key, or input your own choice of publicly traded names. A chart of comparisons (EV/Sales, EV/EBITDA, P/E, P/FCF, Forward P/E) will be displayed, creating implied prices and blending them into an average. The terminal will reveal the current price, whether it's trading at a premium or discount, and give a general recommendation (buy, sell, hold) based on a 15% over/under threshold. 
+I found myself needing a second opinion. After you receive the recommendation, a question will appear: “Show analyst estimates? (y/n):”. I usually enter “y” for yes, which prompts the program to pull several analyst estimates from the yfinance API and form another average, rating the stock on a 1-5 scale (1= Strong Buy, 5= Strong Sell) and forming a tally-like chart of where each analyst stood in their conviction.
+Obviously, you need to do your own research, and this should not be the sole work done to form an investment thesis, but it’s a good starting point when you start to wonder, “Hm, I wonder what the valuations might say”.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Automation</span>
+          </div>
+        </div>
+        <div class="project-files">
+          <div class="file-tabs" data-group="project11">
+            <div class="file-tab active" data-file="p1f1">Valuator.py</div>
+            </div>
+          <div class="file-pane active" id="p11f1"><pre>
+   # I'd like to thank Ken Freeman and RTWS for teaching me ball knowledge
+import yfinance as yf
+import requests
+
+EDGAR_HEADERS = {'User-Agent': 'Alex Kim ak2588@scarletmail.rutgers.edu'}
+
+# some average sector peers to go off of
+SECTOR_PEERS = {
+    'Technology':             ['AVGO', 'TXN', 'MRVL', 'ADI', 'AMD', 'INTC', 'NVDA'],
+    'Consumer Cyclical':      ['ROST', 'BURL', 'TGT', 'LOW', 'HD', 'TJX'],
+    'Consumer Defensive':     ['PG', 'KO', 'PEP', 'CL', 'WMT', 'KO', 'CELH'],
+    'Energy':                 ['XOM', 'CVX', 'COP', 'EOG', 'SLB'],
+    'Industrials':            ['HON', 'MMM', 'GE', 'CAT', 'DE'],
+    'Healthcare':             ['JNJ', 'UNH', 'ABT', 'TMO', 'MDT'],
+    'Financial Services':     ['JPM', 'BAC', 'WFC', 'GS', 'MS'],
+    'Utilities':              ['NEE', 'DUK', 'SO', 'D', 'AEP'],
+    'Communication Services': ['GOOGL', 'META', 'NFLX', 'DIS', 'T'],
+    'Basic Materials':        ['LIN', 'APD', 'ECL', 'NEM', 'FCX'],
+    'Real Estate':            ['AMT', 'PLD', 'CCI', 'EQIX', 'SPG'],
+}
+
+def get_company_metrics(ticker):
+    try:
+        stock     = yf.Ticker(ticker)
+        info      = stock.info
+        fast_info = stock.fast_info
+
+        def yf_row(df, *names):
+            for name in names:
+                for row in df.index:
+                    if name.lower() in row.lower():
+                        val = df.loc[row].iloc[0]
+                        if val is not None and str(val) != 'nan':
+                            return float(val)
+            return 0.0
+
+        price  = info.get('currentPrice') or fast_info.last_price or 0
+        shares = (info.get('sharesOutstanding') or
+                  info.get('impliedSharesOutstanding') or
+                  fast_info.shares or 0)
+        if not price or not shares:
+            return None
+
+        fin = stock.financials
+        bs  = stock.balance_sheet
+        cf  = stock.cashflow
+
+        revenue  = yf_row(fin, 'Total Revenue')
+        ebitda   = yf_row(fin, 'EBITDA', 'Normalized EBITDA')
+        net_inc  = yf_row(fin, 'Net Income')
+        capex    = abs(yf_row(cf, 'Capital Expenditure'))
+        cash     = yf_row(bs, 'Cash And Cash Equivalents',
+                          'Cash Cash Equivalents And Short Term Investments')
+        debt     = yf_row(bs, 'Total Debt', 'Long Term Debt')
+        nci      = yf_row(bs, 'Minority Interest')
+        prefs    = yf_row(bs, 'Preferred Stock', 'RedeemablePreferredStock')
+
+        fcf        = ebitda - capex if ebitda and capex else 0
+        equity_val = shares * price
+        tev        = equity_val + debt - cash + nci + prefs
+
+        ev_sales  = tev / revenue  if revenue  else None
+        ev_ebitda = tev / ebitda   if ebitda   else None
+        pe        = price / (net_inc / shares) if net_inc and shares else None
+        pfcf      = price / (fcf / shares)     if fcf and shares     else None
+        fwd_pe    = info.get('forwardPE')
+        fwd_eps   = info.get('forwardEps') or info.get('trailingEps') or 0
+
+        return {
+            'ticker': ticker, 'price': price, 'shares': shares,
+            'revenue': revenue, 'ebitda': ebitda, 'net_income': net_inc,
+            'capex': capex, 'fcf': fcf, 'cash': cash, 'debt': debt,
+            'nci': nci, 'prefs': prefs, 'tev': tev, 'equity_val': equity_val,
+            'ev_sales': ev_sales, 'ev_ebitda': ev_ebitda,
+            'pe': pe, 'pfcf': pfcf, 'fwd_pe': fwd_pe, 'fwd_eps': fwd_eps,
+            'info': info, 'stock': stock,
+        }
+    except:
+        return None
+
+def median(vals):
+    vals = sorted(v for v in vals if v is not None and 0 < v < 999)
+    if not vals:
+        return None
+    mid = len(vals) // 2
+    return (vals[mid] + vals[mid-1]) / 2 if len(vals) % 2 == 0 else vals[mid]
+
+def get_stock_data(ticker):
+    print(f"\n  Loading {ticker}...")
+    subject = get_company_metrics(ticker)
+    if not subject:
+        print(f"\n  Could not load data for {ticker}.\n")
+        return
+
+    info  = subject['info']
+    stock = subject['stock']
+    s     = subject
+
+    sector = info.get('sector', 'Technology')
+    name   = info.get('longName', ticker)
+
+    # peer group
+    default_peers = [p for p in SECTOR_PEERS.get(sector, []) if p != ticker]
+    print(f"\n  Sector: {sector}")
+    print(f"  Default peers: {', '.join(default_peers)}")
+    custom = input("  Enter custom peers (comma-separated) or press Enter for defaults: ").strip()
+    peers  = [p.strip().upper() for p in custom.split(',') if p.strip()] if custom else default_peers
+
+    print(f"\n  Fetching peer data...")
+    peer_data = []
+    for p in peers:
+        m = get_company_metrics(p)
+        if m:
+            peer_data.append(m)
+            print(f"    {p} ✓")
+        else:
+            print(f"    {p} — skipped")
+
+    if not peer_data:
+        print("\n  No peer data available.\n")
+        return
+
+    # peer multiples
+    med_ev_sales  = median([m['ev_sales']  for m in peer_data])
+    med_ev_ebitda = median([m['ev_ebitda'] for m in peer_data])
+    med_pe        = median([m['pe']        for m in peer_data])
+    med_pfcf      = median([m['pfcf']      for m in peer_data])
+    med_fwd_pe    = median([m['fwd_pe']    for m in peer_data if m['fwd_pe']])
+
+    # implied prices
+    implied = {}
+    if med_ev_sales and s['revenue']:
+        impl_eq = med_ev_sales * s['revenue'] - s['debt'] + s['cash'] - s['nci'] - s['prefs']
+        implied['EV/Sales']  = impl_eq / s['shares']
+    if med_ev_ebitda and s['ebitda']:
+        impl_eq = med_ev_ebitda * s['ebitda'] - s['debt'] + s['cash'] - s['nci'] - s['prefs']
+        implied['EV/EBITDA'] = impl_eq / s['shares']
+    if med_pe and s['net_income'] and s['shares']:
+        implied['P/E']       = med_pe * (s['net_income'] / s['shares'])
+    if med_pfcf and s['fcf'] and s['shares']:
+        implied['P/FCF']     = med_pfcf * (s['fcf'] / s['shares'])
+    if med_fwd_pe and s['fwd_eps']:
+        implied['Fwd P/E']   = med_fwd_pe * s['fwd_eps']
+
+    if not implied:
+        print("\n  Could not calculate implied prices.\n")
+        return
+
+    blended = sum(implied.values()) / len(implied)
+    dp      = (blended - s['price']) / s['price']
+
+    if dp > 0.15:
+        recommendation = "BUY"
+    elif dp < -0.15:
+        recommendation = "SELL"
+    else:
+        recommendation = "HOLD"
+
+    # comps table
+    print(f"\n{'='*55}")
+    print(f"  TRADING COMPS — {ticker} vs Peers")
+    print(f"{'='*55}")
+    print(f"  {'Ticker':<8} {'EV/Sales':>9} {'EV/EBITDA':>10} {'P/E':>8} {'P/FCF':>8}")
+    print(f"  {'─'*8} {'─'*9} {'─'*10} {'─'*8} {'─'*8}")
+    for m in peer_data:
+        ev_s  = f"{m['ev_sales']:.1f}x"  if m['ev_sales']  else 'N/A'
+        ev_eb = f"{m['ev_ebitda']:.1f}x" if m['ev_ebitda'] else 'N/A'
+        pe_   = f"{m['pe']:.1f}x"        if m['pe']        else 'N/A'
+        pf    = f"{m['pfcf']:.1f}x"      if m['pfcf']      else 'N/A'
+        print(f"  {m['ticker']:<8} {ev_s:>9} {ev_eb:>10} {pe_:>8} {pf:>8}")
+    print(f"  {'─'*8} {'─'*9} {'─'*10} {'─'*8} {'─'*8}")
+    med_evs  = f"{med_ev_sales:.1f}x"  if med_ev_sales  else 'N/A'
+    med_eveb = f"{med_ev_ebitda:.1f}x" if med_ev_ebitda else 'N/A'
+    med_pe_  = f"{med_pe:.1f}x"        if med_pe        else 'N/A'
+    med_pf   = f"{med_pfcf:.1f}x"      if med_pfcf      else 'N/A'
+    print(f"  {'Median':<8} {med_evs:>9} {med_eveb:>10} {med_pe_:>8} {med_pf:>8}")
+    s_evs  = f"{s['ev_sales']:.1f}x"  if s['ev_sales']  else 'N/A'
+    s_eveb = f"{s['ev_ebitda']:.1f}x" if s['ev_ebitda'] else 'N/A'
+    s_pe   = f"{s['pe']:.1f}x"        if s['pe']        else 'N/A'
+    s_pf   = f"{s['pfcf']:.1f}x"      if s['pfcf']      else 'N/A'
+    print(f"  {ticker:<8} {s_evs:>9} {s_eveb:>10} {s_pe:>8} {s_pf:>8}  ← subject")
+
+    # implied prices
+    print(f"\n{'='*55}")
+    print(f"  IMPLIED PRICES — {ticker}")
+    print(f"{'='*55}")
+    for method, price_impl in implied.items():
+        prem = (price_impl - s['price']) / s['price']
+        flag = '↑' if prem > 0 else '↓'
+        print(f"  {method:<12} ${price_impl:>8.2f}   ({flag}{abs(prem):.1%} vs current)")
+    print(f"  {'─'*40}")
+    print(f"  {'Blended':<12} ${blended:>8.2f}")
+    print(f"{'='*55}")
+    print(f"  Current Price:   ${s['price']:.2f}")
+    print(f"  {'Premium' if dp > 0 else 'Discount'}:         {dp:.1%}")
+    print(f"  Recommendation:  {recommendation}")
+    print(f"{'='*55}\n")
+
+    # analyst estimates
+    show_analysts = input("  Show analyst estimates? (y/n): ").strip().lower()
+    if show_analysts == 'y':
+        rec_key    = info.get('recommendationKey', 'N/A').upper()
+        rec_mean   = info.get('recommendationMean')
+        n_analysts = info.get('numberOfAnalystOpinions', 0)
+        t_high     = info.get('targetHighPrice')
+        t_low      = info.get('targetLowPrice')
+        t_mean     = info.get('targetMeanPrice')
+        t_median   = info.get('targetMedianPrice')
+
+        if rec_mean:
+            if rec_mean <= 1.5:   rating_label = "STRONG BUY"
+            elif rec_mean <= 2.5: rating_label = "BUY"
+            elif rec_mean <= 3.5: rating_label = "HOLD"
+            elif rec_mean <= 4.5: rating_label = "SELL"
+            else:                 rating_label = "STRONG SELL"
+        else:
+            rating_label = rec_key
+
+        try:
+            recs = stock.recommendations
+            if recs is not None and not recs.empty:
+                latest      = recs.iloc[0]
+                strong_buy  = int(latest.get('strongBuy',  0))
+                buy         = int(latest.get('buy',        0))
+                hold        = int(latest.get('hold',       0))
+                sell        = int(latest.get('sell',       0))
+                strong_sell = int(latest.get('strongSell', 0))
+                breakdown   = True
+            else:
+                breakdown = False
+        except:
+            breakdown = False
+
+        print(f"\n{'='*45}")
+        print(f"  ANALYST ESTIMATES — {ticker}")
+        print(f"{'='*45}")
+        print(f"  Consensus:       {rating_label} ({n_analysts} analysts)")
+        if rec_mean:
+            print(f"  Mean Rating:     {rec_mean:.2f} / 5.0  (1=Strong Buy, 5=Strong Sell)")
+        if breakdown:
+            print(f"  Strong Buy:      {strong_buy}")
+            print(f"  Buy:             {buy}")
+            print(f"  Hold:            {hold}")
+            print(f"  Sell:            {sell}")
+            print(f"  Strong Sell:     {strong_sell}")
+        print(f"  {'─'*40}")
+        if t_low and t_high and t_mean:
+            updown = (t_mean - s['price']) / s['price']
+            print(f"  Price Target Low:    ${t_low:.2f}")
+            print(f"  Price Target Mean:   ${t_mean:.2f}  ({'↑' if updown > 0 else '↓'}{abs(updown):.1%} vs current)")
+            print(f"  Price Target Median: ${t_median:.2f}")
+            print(f"  Price Target High:   ${t_high:.2f}")
+        print(f"{'='*45}\n")
+
+ticker = input("Enter ticker symbol: ").upper()
+get_stock_data(ticker)
+</pre></div>
+        </div>
+      </div>
 
  <script>
   document.querySelectorAll('.project-files').forEach(filesSection => {
